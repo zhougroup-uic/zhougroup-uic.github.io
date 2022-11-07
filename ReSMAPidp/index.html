@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<h1 id="r2t2nmr-for-nmr-transverse-relaxation">R2T2NMR: For NMR Transverse Relaxation</h1>
+<h1 id="resmap-predictor-for-residue-specific-membrane-association-propensities-of-intrinsially-disordered-proteins">ReSMAP: predictor for residue-specific membrane-association propensities of intrinsially disordered proteins</h1>
 <p><img src="images/ReSMAP.png" style="width:80.0%" /></p>
 <h2 id="method-at-a-glance">Method at a Glance</h2>
 <p>ReSMAP is a sequence-based method for predicting the <u> Re </u> sidue- <u> S </u> pecific <u> M </u> embrane- <u> A </u> ssociation <u> P </u> ropensities of intrinsically disordered proteins. The prediction is made from a sequence-based partition function. Every residue <i> i </i> contributes a multiplicative Boltzmann factor <i> q </i> <sub> <i> i; </i> | <i> i - n </i> | </sub> to the statistical weight for residue <i> n </i> ’s membrane association. <i> q </i> <sub> <i> i; </i> | <i> i - n </i> | </sub> depends on the amino-acid type of residue <i> i </i> and the sequence distance | <i> i – n </i> |. We only distinguish three types of amino acids: positively charged (K, R, and the N-terminus), negatively charged (D, E, and the C-terminus), and neutral (all other amino acids). The parameters of the partition function were optimized against data from molecular dynamics simulations of disordered proteins associating with acidic membranes. The images above illustrate the ChiZ protein associated with a POPG:POPE membrane (left), and the agreement between ReSMAP prediction and tthe molecular dynamics simulation data for membrane-association propensity ( <i> P </i> ) (right).</p>

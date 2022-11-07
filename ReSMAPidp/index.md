@@ -4,7 +4,8 @@
 </head>
 <body>
 
-# R2T2NMR: For NMR Transverse Relaxation
+# ReSMAP: predictor for residue-specific membrane-association propensities of intrinsially disordered proteins
+
 
 ![](images/ReSMAP.png){width=80%}
 

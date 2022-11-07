@@ -1,1 +1,1 @@
-text
+[index file](ReSMAPidp/index.md)

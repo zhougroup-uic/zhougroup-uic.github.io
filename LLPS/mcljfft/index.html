@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Emscripten-Generated Code</title>
+    <link href="styles/default.css" rel="stylesheet" type="text/css">
+    <link href="styles/default_article.css" rel="stylesheet" type="text/css">
+    <link href="mclj.css" rel="stylesheet" type="text/css"> 
+  </head>
+  <body>
+
+    <h1 align=center>
+	MC simulation with FMAP-enabled insertion
+    </h1>
+    <div class="article_wrapper">
+      <div class="roundcorner_16_parch_content">
+        <div class="article_subtopic">Introduction</div>
+        <blockquote>
+	<p>An MC simulation at constant <i>NVT</i> is used to generate configurations for a LJ fluid with shifted potential at 3.0σ cutoff. FMAP-enabled insertion is used to obtain the excess chemical potential. The propgram will take about 2 to 12 minutes with default parameters, for N from 30 to 450, on i7-4770S CPU @ 3.10GHz. You could always check the progress from Console. (<a href="https://balsamiq.com/support/faqs/browserconsole/" target="_blank">Finding Your Browser's Developer Console<a>)</p>
+        </blockquote>
+        <div class="article_subtopic">Parameters</div>
+        <blockquote>
+	<table>
+	<tr>
+        <th><label>Number of particles</label></th>
+        <th><input type="numeric" id="sim_N" value=30 size=8> </th>
+	</tr>
+	<tr>
+        <th><label>Side length of box</label></th>
+        <th><input type="numeric" id="sim_L" value=8.0 size=8></th>
+	</tr>
+	<tr>
+        <th><label>Temperature</label></th>
+        <th><input type="numeric" id="sim_T" value=0.65 size=8></th>
+	</tr>
+	<tr>
+        <th><label>MC steps for equilibration</label></th>
+	<th><input type="numeric" id="sim_eq" value=2000000 size=8></th>
+	</tr>
+	<tr>
+        <th><label>MC steps for production</label></th>
+	<th><input type="numeric" id="sim_nc" value=20000000 size=8></th>
+	</tr>
+        <tr>
+        <th><label>MC steps between insertions</label></th>
+	<th><input type="numeric" id="sim_fs" value=10000 size=8></th>
+	</tr>
+	<tr hidden>
+        <th><label>Number of insertions per snapshot</label></th>
+        <th><input type="numeric" id="sim_ts" value=1 size=8></th>
+        </tr>
+	<tr>
+        <th><label>Seed for random number generator</label></th>
+	<th><input type="numeric" id="sim_seed" value=3 size=8></th>
+	</tr>
+	<tr hidden>
+        <th><label >cutoff</label></th>
+        <th><input type="numeric" id="sim_rc" value=3.0 size=8></th>
+	</tr>
+	<tr>
+        <th></th>
+        <th><button id="runbutton">Run</button></th>
+	</tr>
+	</table>
+        </blockquote>
+    <div hidden>
+    <label >Simulation progress:</label> <progress id="sim_prog" value="0" max="100"> 0% </progress>
+    </div>
+    <div class="article_subtopic">Result</div> 
+    <blockquote>
+    <table width=100% height="60" style="border:1px solid #000000;">
+    <tr>
+    	<th>Number Density</th>
+    	<th>Excess Chemical Potential (<i>kT</i>)</th>
+    </tr>
+    <tr>
+    	<th><code type="numeric" id="sim_nd" size=8>0</code></th>
+    	<th><code type="numeric" id="sim_ex" size=8>0</code></th>
+    </tr>
+    </table>
+    <textarea id="output" rows="8"></textarea>
+    <pre id="log"></pre>
+    <canvas hidden id="canvas1" width="400" height="200" style="border:1px solid #000000;"></canvas>
+    </blockquote>
+    </div>
+    </div>
+
+    <script type="text/javascript" src="mcljwrap.js"></script>
+    <script async type="text/javascript" src="mcljfft.js"></script>
+  </body>
+</html>

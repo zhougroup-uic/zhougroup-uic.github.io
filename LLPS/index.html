@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+    <title>
+    From Chemical Potential to Phase Diagram
+    </title>
+    <link href="styles/default.css" rel="stylesheet" type="text/css">
+    <link href="styles/polysolve.css" rel="stylesheet" type="text/css">
+    <link href="styles/default_article.css" rel="stylesheet" type="text/css">
+    <script language="JavaScript" src="polysolve.js" type="text/javascript"></script>
+    <script language="JavaScript" src="phasediagram.js" type="text/javascript"></script>
+    <script language="JavaScript" src="matrix_processor.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <h1 align=center>
+      From Chemical Potential to Phase Diagram
+    </h1>
+    <div class="article_wrapper">
+      <div class="roundcorner_16_parch_content">
+	<div class="article_subtopic">Introduction</div>
+        <blockquote>
+          <p>
+           For phase transitions, the chemical potential measures the free energy for exchanging molecules between different phases. For a configuration of a system, the Widom insertion method yields the excess chemical potential, which is the chemical potential without the ideal part. However, brute-force insertion is computationally expensive. We have developed FMAP-enabled insertion with acceleration from fast Fourier transform. Both insertion methods require a set of configurations, which can be obtained through Monte Carlo (MC) simulation. The values of excess chemical potential for different densities and temperatures through MC and insertions are accessible from <a href="mclj/">MC for LJ particles with brute-force insertion</a> and <a href="mcljfft/">MC for LJ particles with` FMAP-enabled insertion</a>.
+          </p>
+        </blockquote>
+	<div class="article_subtopic">The density dependence of excess chemical potential</div>
+        <blockquote>
+          <div>
+            <p>
+	Input the number density and excess chemical potential data in pairs into the following box. The excess chemical potential should be in units of kT. The following example is from simulation with LJ shifted potetail at a cutoff of 3.0 σ and T=0.65 with FMAP-enabled insertion.
+            </p>
+            <p style="width:860">
+              <b>
+                Number Density and Excess Chemical Potential Data Entry Area:
+              </b>
+              <span style="color:gray;">
+                <span class="hovernote" title="Use this window to enter input data for analysis. Type or copy text from the system clipboard &mdash; data should be ordered in sequential x,y pairs, but apart from that, nearly any format will be accepted except numbers with embedded thousands separators (i.e. commas).">
+                </span>
+              </span>
+              <span style="color:gray;float:right;">
+                Select: Ctrl+A | Copy: Ctrl+C | Paste: Ctrl+V
+              </span>
+            </p>
+            <code>
+              <div class="data_entry shadow">
+                <textarea class="scroll_textarea" id="data_entry" onkeyup="polysolve.generate_result();" title="Enter or paste free-form x,y paired data in this window">
+0.058594 -1.49784
+0.117188 -2.82125
+0.175781 -3.60747
+0.234375 -4.08
+0.292969 -4.76423
+0.351562 -5.07318
+0.410156 -5.31277
+0.468750 -5.48594
+0.527344 -5.97833
+0.585938 -6.36961
+0.644531 -6.83577
+0.703125 -7.46792
+0.761719 -7.26286
+0.820312 -6.23518
+0.878906 -4.40366
+</textarea>
+              </div>
+            </code>
+          </div>
+          <h3>Polynomial fitting</h3>
+          <p> We fit the density dependence of the excess chemical potential data to a polynomial without the constant term. While a high order allows the polynomial to match the data better, it may also overfit. We conclude that the fifth order is optimal. The details of polynomial regression are explained by P. Lutus (link provided in the Acknowledgement section).</p>
+          <div id="chart_wrapper">
+            <!-- chart graphic div -->
+            <div class="text_graph" id="textPane0">
+              <canvas class="canvas_graph shadow" id="graphicPane1">
+              </canvas>
+            </div>
+            <!-- chart text div -->
+            <div class="text_graph" id="textPane1" title="Click chart for specific values">
+            </div>
+          </div>
+          <!-- chart wrapper -->
+          <div class="control_panel shadow" id="control_panel">
+            <table border="0" class="control_table">
+              <tbody>
+                <tr>
+                  <td title="Reset all entries and values to defaults">
+                    <button onclick="polysolve.reset_all()">
+                      <img alt="" height="22" src="images/red-dot.gif" style="vertical-align:middle;" title="" width="22">
+           &nbsp;Reset All
+                    </button>
+                  </td>
+                  <td hidden="" title="Reverse all data pairs x,y -&gt; y,x">
+                    <input id="reverse_checkbox" onclick="polysolve.adjust_degree(0)" type="checkbox">
+                    Reverse
+                  </td>
+                  <td>
+                    Degree:
+                  </td>
+                  <td title="Decrease the polynomial degree">
+                    <button onclick="polysolve.adjust_degree(-1);">
+                      <img alt="" height="22" src="images/arrow-left.png" title="" width="22">
+                    </button>
+                  </td>
+                  <td title="Current polynomial degree">
+                    <span class="num_disp" id="poly_degree_field">
+                      99
+                    </span>
+                  </td>
+                  <td title="Increase the polynomial degree">
+                    <button onclick="polysolve.adjust_degree(1);">
+                      <img alt="" height="22" src="images/arrow-right.png" title="" width="22">
+                    </button>
+                  </td>
+                  <td title="Choose the highest polynomial degree consistent with the present data. This won't necessarily produce the best outcome.">
+                    <button onclick="polysolve.set_optimum();">
+                      <img alt="" height="22" src="images/arrow-up-double.png" style="vertical-align:middle;" title="" width="22">
+                      &nbsp;&nbsp;Maximum
+                    </button>
+                  </td>
+                  <td title="Create graphic of this chart in separate browser window (doesn't work in all browsers)">
+                    <button onclick="polysolve.generate_graphic();">
+                      <img alt="" height="22" src="images/office-chart-line.png" style="vertical-align:middle;" title="" width="22">
+                      &nbsp;&nbsp;Graphic
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="width:860">
+          <b>
+            Results Area:
+          </b>
+          <span class="hovernote" title="Use this window to review and/or copy the polynomial analysis results">
+          </span>
+          <span style="color:gray;float:right;">
+            Select: Ctrl+A | Copy: Ctrl+C | Paste: Ctrl+V
+          </span>
+        </p>
+        <div class="data_entry shadow">
+          <textarea class="scroll_textarea" id="results_area" title="Copy results from this window"></textarea>
+        </div>
+          <h4>
+            Equation for excess chemical potential
+          </h4>
+          <code class="eq_disp" id="eq_exchempot">
+          </code>
+        </blockquote>
+	<div class="article_subtopic">Coexistence line</div>
+        <blockquote>
+          <h4>
+            Equation for chemical potential with ideal gas part added
+          </h4>
+          <code class="eq_disp" id="eq_chempot">
+          </code>
+          <p>With the above expression for the chemical potential, we use the Newton-Raphson method to find the intersections with a horizontal line and match the enclosed areas on the two sides. The equality in area ensures the equality in pressure between the dilute phase and dense phase, similar to a construction proposed by Maxwell.</p>
+          <div id="chart_wrapper2">
+            <!-- chart graphic div -->
+            <div class="text_graph" id="textPane2">
+              <canvas class="canvas_graph shadow" id="graphicPane2">
+              </canvas>
+            </div>
+            <!-- chart text div -->
+            <div class="text_graph" id="textPane3" title="Click chart for specific values">
+            </div>
+          </div>
+          <!-- chart wrapper -->
+          <div class="control_panel shadow" id="control_panel2">
+            <table border="0" class="control_table">
+              <tbody>
+                <tr>
+                  <td title="Reset graph2">
+                    <button onclick="polysolve.reset_graph2()">
+                      <img alt="" height="22" src="images/red-dot.gif" style="vertical-align:middle;" title="" width="22">
+           &nbsp;Reset
+                    </button>
+                  </td>
+                  <td hidden="" title="Reverse all data pairs x,y -&gt; y,x">
+                    <input id="reverse_checkbox" onclick="polysolve.adjust_degree(0)" type="checkbox">
+                    Reverse
+                  </td>
+                  <td>
+                    Initial chemical potentail:
+                  </td>
+                  <td>
+                      <input id=input_coexist value=-6.2 size="8">
+                  </td>
+		   <td>
+			&#177
+		   </td>
+		  <td>
+                      <input id=input_yspan value=2.0 size="8">
+                  </td>
+		  <td title="Find the intersections with the initial">
+                    <button onclick="polysolve.update_graph2(false);">
+                      <img alt="" height="22" src="images/question-mark.png" style="vertical-align:middle;" title="" width="22">
+                        &nbsp;&nbsp;Find intersections
+                    </button>
+                  <td title="Match the enclosed areas based on the initial">
+                    <button onclick="polysolve.update_graph2();">
+                      <img alt="" height="22" src="images/mail-mark-notjunk.png" style="vertical-align:middle;" title="" width="22">
+			&nbsp;&nbsp;Match areas
+                    </button>
+                  </td>
+                  <td title="Create graphic of this chart in separate browser window (doesn't work in all browsers)">
+                    <button onclick="polysolve.generate_graphic2();">
+                      <img alt="" height="22" src="images/office-chart-line.png" style="vertical-align:middle;" title="" width="22">
+                      &nbsp;&nbsp;Graphic
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </blockquote>
+        <blockquote>	
+          <h4>
+            Condition of coexistence
+          </h4>
+          <code class="eq_disp" id="eq_coexist"></code>
+          <br>
+          <code class="eq_disp" id="eq_spinodal"></code>
+          <p>The numerical results can be verified by Wolfram|Alpha</p>
+          <ul>
+          <li>
+	   The x values of the intersections (red points) between the blue curve and black line are the roots of the polynomial at the desired chemical potential, check <a id="math_roots" href='' target="_blank">the roots</a>
+          </li>
+          <li> 
+	   The left and right areas should be very close in absolute value but opposite in sign, check the values of <a id="math_intg_left" href='' target="_blank">the left area</a> and <a id="math_intg_right" href='' target="_blank">the right area</a>
+          </li>
+	  <li>
+           The spinodal densities (blue points) are the roots of the derivative of the polynomial, check <a id="math_roots_deriv" href='' target="_blank">the roots of the derivative</a>
+	  </li> 
+	  </ul>
+       <div hidden>
+        <p style="width:860">
+          <b>
+            Generator chemical potential and excess chemical potential from equations:
+          </b>
+          <span class="hovernote" title="Use this window  to create a table of Density,Chemical Potential,Excess Chemical Potential data based on the polynomial coefficients generated above">
+          </span>
+          <span style="color:gray;float:right;">
+            Select: Ctrl+A | Copy: Ctrl+C | Paste: Ctrl+V
+          </span>
+        </p>
+        <div class="data_entry shadow">
+          <textarea class="scroll_textarea" id="table_results_area" title='Click "Generate Table" below, then copy results from this window'></textarea>
+        </div>
+        <div class="control_panel shadow" id="table_control_panel">
+          <table border="0" class="control_table">
+            <tbody>
+              <tr>
+                <td>
+                  Start:
+                </td>
+                <td>
+                  <input class="value_field" id="table_start" title="Enter a table x start value" type="text">
+                </td>
+                <td>
+                  End:
+                </td>
+                <td>
+                  <input class="value_field" id="table_end" title="Enter a table x end value" type="text">
+                </td>
+                <td>
+                  Step:
+                </td>
+                <td>
+                  <input class="value_field" id="table_step" title="Enter a table x step value (the distance between rows)" type="text">
+                </td>
+                <td>
+                  Decimals:
+                </td>
+                <td>
+                  <input class="value_field" id="table_decimals" title="Enter the desired decimal precision" type="text" value="2">
+                </td>
+                <td title="Use exponential notation rather than fixed-point">
+                  <input id="table_exponent" type="checkbox">
+                  Exponential
+                </td>
+                <td>
+                  <button id="generate_table_button" onclick="polysolve.generate_table();" title="Generate a comma-separated-value (CSV) table and put the results in the window above">
+                    <img alt="" height="22" src="images/view-pim-journal.png" style="vertical-align:middle;" title="" width="22">
+                    &nbsp;&nbsp;Generate Table
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+         </div>
+       </blockquote>
+       <div class="article_subtopic">Phase Diagram</div>
+       <blockquote>
+       	      <p>The phase diagram collects binodal and spinodal densities at different temperatures.The preset data for brute-force and FMAP insertions are from calcualtion at <i>L</i>  = 8.<p>
+              <div class="data_entry shadow">
+       	      <table style="table-layout: fixed; width: 100%;">
+	 <tr>
+	   <td style="width:32%;">
+		<p><b>Data Entry for brute-force</b></p>
+		
+	   </td>
+	   <td style="width:32%;">
+		<p><b>Data Entry for FMAP binodal</b></p>
+	    </td>
+	   <td style="width:32%;">
+		<p><b>Data Entry for FMAP spinodal</b></p>
+	    </td>
+         <tr>
+       </table>
+		<textarea class="scroll_textarea_dia" id="data_entry_dia_nist" onkeyup="polysolve.generate_result();" title="Enter or paste free-form x,y paired data in this window">
+0.65 0.0023218 0.8376466
+0.70 0.0043734 0.8190991
+0.75 0.0075931 0.7934679
+0.80 0.0122802 0.7673708
+0.85 0.0190183 0.7374460
+0.90 0.0284116 0.7068853
+0.95 0.0405430 0.6734460
+1.00 0.0583024 0.6361260
+1.05 0.0769232 0.6003575
+1.10 0.1090452 0.5542660
+1.15 0.1508763 0.5019465
+                </textarea>
+                <textarea class="scroll_textarea_dia" id="data_entry_dia_bino" onkeyup="polysolve.generate_result();" title="Enter or paste free-form x,y paired data in this window">
+0.65 0.002175 0.835378
+0.70 0.004121 0.819054
+0.75 0.007233 0.795280
+0.80 0.011764 0.768773
+0.85 0.018263 0.738303
+0.90 0.026953 0.706901
+0.95 0.038744 0.672090
+1.00 0.054570 0.636500
+1.05 0.075107 0.596934
+1.10 0.103884 0.548459
+1.15 0.143142 0.497071
+                </textarea>
+		<textarea class="scroll_textarea_dia" id="data_entry_dia_spino" onkeyup="polysolve.generate_result();" title="Enter or paste free-form x,y paired data in this window">
+0.65 0.039832 0.717891
+0.70 0.050656 0.700126
+0.75 0.060759 0.676554
+0.80 0.072645 0.643124
+0.85 0.086550 0.607168
+0.90 0.100949 0.577953
+0.95 0.118144 0.546073
+1.00 0.136241 0.518620
+1.05 0.156409 0.489410
+1.10 0.180263 0.455078
+1.15 0.211136 0.422408
+                </textarea>
+		</div>
+	</blockquote>
+	<blockquote>
+	<div id="chart_wrapper3">
+            <!-- chart graphic div -->
+            <div class="text_graph" id="textPane4">
+              <canvas class="canvas_graph shadow" id="graphicPane3">
+              </canvas>
+            </div>
+            <!-- chart text div -->
+            <div class="text_graph" id="textPane5" title="Click chart for specific values">
+            </div>
+          </div>
+          <div class="control_panel shadow" id="control_panel3">
+            <table border="0" class="control_table">
+              <tbody>
+                <tr>
+                  <td title="Reset graph3">
+                    <button onclick="polysolve.reset_hide()">
+                      <img alt="" height="22" src="images/red-dot.gif" style="vertical-align:middle;" title="" width="22">
+                      &nbsp;Reset
+                    </button>
+                  </td>
+                  <td hidden="">
+                      <input id=input_coexist value=-4.6>
+                  </td>
+                  <td title="Show Spinodal">
+		    <input type="checkbox" id="checkbox_show_spino" checked>
+                    &nbsp;&nbsp;Show spinodal</input>
+		  </td>
+                  <td title="Show Benchmark">
+                    <input type="checkbox" id="checkbox_show_nist" checked>
+                    &nbsp;&nbsp;Show brute-force</input>
+                  </td>
+                  <td title="Update">
+                    <button onclick="polysolve.update_hide();">
+                      <img alt="" height="22" src="images/mail-mark-notjunk.png" style="vertical-align:middle;" title="" width="22">
+                        &nbsp;&nbsp;Update
+                    </button>
+                  </td>
+                  <td title="Create graphic of this chart in separate browser window (doesn't work in all browsers)">
+                    <button onclick="polysolve.generate_graphic3();">
+                      <img alt="" height="22" src="images/office-chart-line.png" style="vertical-align:middle;" title="" width="22">
+                      &nbsp;&nbsp;Graphic
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+       </blockquote>
+       <div class="article_subtopic">Note</div>
+       <blockquote>
+         <p>The codes for this and other methods for calculating the binodals of phase-separated condensates are available on <a href="https://github.com/hzhou43/MiMB_simulations/" target="_blank">github</a> </p>
+       </blockquote>
+       <div class="article_subtopic">Acknowledgement</div>
+       <blockquote>
+	  <p>The polynomial fitting is modeled after <a href="https://arachnoid.com/polysolve/" target="_blank">polysolve by P. Lutus</a></p>
+       </blockquote>
+       <div class="article_subtopic">References</div>
+       <blockquote>
+	  <p>S. Qin and H.-X. Zhou (2016). Fast method for computing chemical potentials and liquid-liquid phase equilibria of macromolecular solutions. J. Phys. Chem. B. 120, 8164-8174.</p>
+	  <p>K. Mazarakos, S. Qin, and H.-X. Zhou (2022). Calculating binodals and interfacial tension of phase-separated condensates from molecular simulations, with finite-size corrections. Methods Mol. Biol. (accepted).</p>
+       </blockquote>
+      </div>
+    </div>
+  </body>
+</html>

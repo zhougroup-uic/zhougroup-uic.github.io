@@ -31,15 +31,6 @@ function destroyClickedElement(event) {
     document.body.removeChild(event.target);
 }
 
-document.getElementById('btn-download').onclick = function() {
-    // Trigger the download
-    var a = document.createElement('a');
-    let myChart = Chart.getChart("myChart");
-    a.href = myChart.toBase64Image();
-    a.download = 'ReSMAPidp.png';
-    a.click();
-}
-
 function seqchk(searchKey) {
     if (/^>/.test(searchKey)) {
         searchKey = searchKey.substring(searchKey.indexOf("\n") + 1);

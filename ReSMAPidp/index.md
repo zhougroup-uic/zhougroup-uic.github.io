@@ -82,9 +82,6 @@ dynamics simulation data for membrane-association propensity ( <i> P
 <canvas id="myChart"></canvas>
 </div>
 
-<br>
-<button id="btn-download"> Download figure </button>
-
 <script src="js/formfill.js"></script>
 <script src="js/ReSMAPidp.js"></script>
 <script src="js/chart.min.js"></script>

@@ -13,7 +13,7 @@
 SeqDYN is a sequence-based method for predicting the NMR transverse relaxation rates of individual residues in an intrinsically disordered protein. For a central residue *n*, every other residue *i* contributes a multiplicative factor *f(i; n)*, which depends on the amino-acid type of residue *i* and the sequence distance |*i-n*|.
 
 #### Reference:
-* S. Qin and H.-X. Zhou, Predicting the Sequence-Dependent Backbone Dynamics of Intrinsically Disordered Proteins, to be published.
+* S. Qin and H.-X. Zhou, Predicting the Sequence-Dependent Backbone Dynamics of Intrinsically Disordered Proteins, [bioRxiv 2023.02.02.526886](https://doi.org/10.1101/2023.02.02.526886)
 
 ## Prediction
 

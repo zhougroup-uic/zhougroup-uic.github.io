@@ -16,7 +16,7 @@ interactions (FMAP) approach.
 
 It takes the W(r) profile and volume-excluded diameter as input to produce the structure factors, S(q), at targeted concentration, bridged via percus-yevick approximation.
 
-The FMAPB2 that provides the input info could be accessed from  [FMAPB2 web server](https://pipe.rcc.fsu.edu/fmapb2/) or a standalone version via [FMAPB2 registration](https://forms.office.com/r/nCWK1Rhk9L) or [direct link](https://github.com/zhougroup-uic/fmapb2). 
+The FMAPB2 that provides the input info could be accessed from  [FMAPB2 web server](https://pipe.rcc.fsu.edu/fmapb2/) or a standalone version via [FMAPB2 registration](https://forms.office.com/r/nCWK1Rhk9L) or [direct link](https://github.com/zhougroup-uic/fmapb2). The registration infomation will only be used for updating notice and user statistics. 
 
 The javascript for FMAPS(q) to run in commad line are also available via [FMAPS(q) registration](https://forms.office.com/r/Q11wQ63ZZs) or [direct link](https://github.com/zhougroup-uic/fmapsq). 
 
@@ -49,9 +49,9 @@ The javascript for FMAPS(q) to run in commad line are also available via [FMAPS(
 
 > <input name="mol" size="20" type="number" value=2 > mM
 
-* Or calculate from the Molecular Weight and mass concentration
+* Or leave the box above empty and calculate from the Molecular Weight and mass concentration
 
-> <input name="molWght" size="20" type="number"> kDa <input name="concent" size="20" type="number"> mg/ml
+> Molecular Weight: <input name="molWght" size="20" type="number"> kDa; Mass concentration: <input name="concent" size="20" type="number"> mg/ml
 
 > <input onclick="predict()" type="button" value="Predict!">
 <input type="reset" value="Clear Entries">
@@ -67,7 +67,7 @@ The javascript for FMAPS(q) to run in commad line are also available via [FMAPS(
 > eta: <code class="eq_disp" id="protein_eta"> </code>
 
 #### Data
-1st column, *q*; 2nd column, *FMAPS(q)*; 3nd column, *rho\*(f-f<sub>HS</sub>)*; 4th column *PY*
+1st column, *q*; 2nd column, *FMAPS(q)*; 3nd column, *rho\*(f-f<sub>HS</sub>)*; 4th column, *PY*
 
 <textarea id="textArea" style="position: relative; height:40vh; width:80vw"></textarea>
 

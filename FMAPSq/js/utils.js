@@ -44,20 +44,36 @@ function rdfchange(){
 
 function predict() {
     //let fname = find('fmapsq', 'submitter');
-    let fname=find('fmapsq', 'file-input').files[0];
-    let diam = Number(find('fmapsq', 'simga').value);
+    const fname=find('fmapsq', 'file-input').files[0];
+    const diam = Number(find('fmapsq', 'simga').value);
     let Cmol = Number(find('fmapsq', 'mol').value)/1000.0;
-    let qstart= Number(find('fmapsq', 'qstart').value);
-    let qstep= Number(find('fmapsq', 'qstep').value);
-    let nq= Number(find('fmapsq', 'qnum').value);
-    let protein_sigma= document.getElementById('protein_sigma');
-    let protein_mol = document.getElementById('protein_mol');
-    let protein_eat = document.getElementById('protein_eta');
+    const mW = Number(find('fmapsq', 'molWght').value)*1000.0;
+    const mCon = Number(find('fmapsq','concent').value);
+    const qstart= Number(find('fmapsq', 'qstart').value);
+    const qstep= Number(find('fmapsq', 'qstep').value);
+    const nq= Number(find('fmapsq', 'qnum').value);
+    const protein_sigma= document.getElementById('protein_sigma');
+    const protein_mol = document.getElementById('protein_mol');
+    const protein_eat = document.getElementById('protein_eta');
     protein_sigma.innerHTML = diam;
+    console.log(Cmol);
+    if (Cmol==0){
+        if ((mW!=0) && (mCon!=0)){
+            Cmol=mCon/mW;
+        }else{
+            alert("Need specify molarity of protein solutions.");
+            abort();
+        }
+    }
     protein_mol.innerHTML = Cmol;
-    protein_eat.innerHTML = "";
-    let result = fmapsq(fname,diam,qstart,qstep,nq,Cmol);
-    let textarea = document.getElementById('textArea')
+    const eta=getEta(Cmol,diam/2.0);
+    if (eta>0.5){
+        protein_eat.innerHTML = `${eta} > 0.5. Warning: the result is not reliable.`
+    }else{
+        protein_eat.innerHTML = eta;
+    }
+    const result = fmapsq(fname,diam,qstart,qstep,nq,Cmol);
+    const textarea = document.getElementById('textArea')
     textarea.innerHTML = result;
     plot();
 }

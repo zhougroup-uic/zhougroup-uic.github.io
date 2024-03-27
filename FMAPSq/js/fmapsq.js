@@ -2,6 +2,12 @@ const { cos, sin, PI } = Math;
 const constantsN_A = 6.02214076e23;
 //const fs = require('fs');
 
+function getEta(molarity,R){
+    const numdens = constantsN_A * molarity * 1e-27;
+    const eta = (4.0 / 3.0) * PI * R ** 3 * numdens;
+    return eta;
+}
+
 function PercusYevick(k, R, molarity = null, eta = null) {
     if (molarity !== null) {
         const numdens = constantsN_A * molarity * 1e-27;
@@ -101,7 +107,7 @@ function fmapsq(fname,sigma,qstart,qstep,nq,mol){
     //return qs,qm,PY
     let output = "";
     for (let i = 0; i < qs.length; i++) {
-        let row=`${qs[i]} ${1.0 / (1.0 / PY[i] - qm[i] * numd)} ${qm[i] * numd} ${PY[i]} \n`;
+        let row=`${qs[i].toFixed(3)} ${(1.0 / (1.0 / PY[i] - qm[i] * numd)).toExponential(4)} ${(qm[i] * numd).toExponential(4)} ${PY[i].toExponential(4)} \n`;
         //console.log(qs[i], 1.0 / (1.0 / PY[i] - qm[i] * numd), qm[i] * numd, PY[i]);      
         output += row;
     }

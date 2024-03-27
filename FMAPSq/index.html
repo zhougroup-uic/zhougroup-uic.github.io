@@ -8,7 +8,7 @@
 <h2 id="method-at-a-glance">Method at a Glance</h2>
 <p>FMAPS(q), for calculating the structure factor, of a protein solution, by extending our fast Fourier transform-based modeling of atomistic protein-protein interactions (FMAP) approach.</p>
 <p>It takes the W(r) profile and volume-excluded diameter as input to produce the structure factors, S(q), at targeted concentration, bridged via percus-yevick approximation.</p>
-<p>The FMAPB2 that provides the input info could be accessed from <a href="https://pipe.rcc.fsu.edu/fmapb2/">FMAPB2 web server</a> or a standalone version via <a href="https://forms.office.com/r/nCWK1Rhk9L">FMAPB2 registration</a> or <a href="https://github.com/zhougroup-uic/fmapb2">direct link</a>.</p>
+<p>The FMAPB2 that provides the input info could be accessed from <a href="https://pipe.rcc.fsu.edu/fmapb2/">FMAPB2 web server</a> or a standalone version via <a href="https://forms.office.com/r/nCWK1Rhk9L">FMAPB2 registration</a> or <a href="https://github.com/zhougroup-uic/fmapb2">direct link</a>. The registration infomation will only be used for updating notice and user statistics.</p>
 <p>The javascript for FMAPS(q) to run in commad line are also available via <a href="https://forms.office.com/r/Q11wQ63ZZs">FMAPS(q) registration</a> or <a href="https://github.com/zhougroup-uic/fmapsq">direct link</a>.</p>
 <h4 id="reference">Reference:</h4>
 <ul>
@@ -44,10 +44,10 @@
 <p><input name="mol" size="20" type="number" value=2 > mM</p>
 </blockquote>
 <ul>
-<li>Or calculate from the Molecular Weight and mass concentration</li>
+<li>Or leave the box above empty and calculate from the Molecular Weight and mass concentration</li>
 </ul>
 <blockquote>
-<p><input name="molWght" size="20" type="number"> kDa <input name="concent" size="20" type="number"> mg/ml</p>
+<p>Molecular Weight: <input name="molWght" size="20" type="number"> kDa; Mass concentration: <input name="concent" size="20" type="number"> mg/ml</p>
 </blockquote>
 <blockquote>
 <p><input onclick="predict()" type="button" value="Predict!"> <input type="reset" value="Clear Entries"> <input onclick="FillForm('fmapsq')" type="button" value="Input Example"></p>
@@ -64,7 +64,7 @@
 <p>eta: <code class="eq_disp" id="protein_eta"> </code></p>
 </blockquote>
 <h4 id="data">Data</h4>
-<p>1st column, <em>q</em>; 2nd column, <em>FMAPS(q)</em>; 3nd column, <em>rho*(f-f<sub>HS</sub>)</em>; 4th column <em>PY</em></p>
+<p>1st column, <em>q</em>; 2nd column, <em>FMAPS(q)</em>; 3nd column, <em>rho*(f-f<sub>HS</sub>)</em>; 4th column, <em>PY</em></p>
 <textarea id="textArea" style="position: relative; height:40vh; width:80vw"></textarea>
 <p><br> <button id="save" type="button" value="save"> Save data </button></p>
 <h4 id="figure">Figure</h4>

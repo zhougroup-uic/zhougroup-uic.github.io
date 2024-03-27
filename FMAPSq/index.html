@@ -8,57 +8,63 @@
 <h2 id="method-at-a-glance">Method at a Glance</h2>
 <p>FMAPS(q), for calculating the structure factor, of a protein solution, by extending our fast Fourier transform-based modeling of atomistic protein-protein interactions (FMAP) approach.</p>
 <p>It takes the W(r) profile and volume-excluded diameter as input to produce the structure factors, S(q), at targeted concentration, bridged via percus-yevick approximation.</p>
-<p>The FMAPB2 that provide the input info could access from web server at https://pipe.rcc.fsu.edu/fmapb2/ or a standalone version at https://github.com/zhougroup-uic/fmapb2. The javascript for FMAPS(q) to run in commadline are also aivalble at https://github.com/zhougroup-uic/fmapsq.</p>
+<p>The FMAPB2 that provides the input info could be accessed from <a href="https://pipe.rcc.fsu.edu/fmapb2/">FMAPB2 web server</a> or a standalone version via <a href="https://forms.office.com/r/nCWK1Rhk9L">FMAPB2 registration</a> or <a href="https://github.com/zhougroup-uic/fmapb2">direct link</a>.</p>
+<p>The javascript for FMAPS(q) to run in commad line are also available via <a href="https://forms.office.com/r/Q11wQ63ZZs">FMAPS(q) registration</a> or <a href="https://github.com/zhougroup-uic/fmapsq">direct link</a>.</p>
 <h4 id="reference">Reference:</h4>
 <ul>
 <li>S. Qin and H.-X. Zhou, Calculating Structure Factors of Protein Solutions by Atomistic Modeling of Protein-Protein Interactions, in submission.</li>
 </ul>
 <h2 id="prediction">Prediction</h2>
-<h4 id="upload-the-wr-profile">upload the W(r) profile</h4>
+<h5 id="protein-infomation">Protein infomation</h5>
 <form name="fmapsq">
 <ul>
-<li>Upload the gr.txt file from FMAPB2</li>
+<li>Upload the Bltz.txt file from FMAPB2</li>
 </ul>
 <blockquote>
-<p><input type="file" id="file-input"/></p>
+<p><input type="file" name="file-input" onchange="rdfchange()"></p>
 </blockquote>
 <ul>
-<li>The volume-excluded diameter [<em>Note: the vaule could obtain from parms.txt </em>]</li>
+<li>The volume-excluded diameter</li>
 </ul>
 <blockquote>
-<p><input name="simga" size="20" type="number"/></p>
+<p><input name="simga" size="20" type="number"> Å</p>
+</blockquote>
+<h5 id="range-of-q-values-for-outputting">Range of q values for outputting</h5>
+<ul>
+<li>the starting value of q, the step size for incrementing, the number of values</li>
+</ul>
+<blockquote>
+<p><input name="qstart" size="20" type="number" value=0.001 > <input name="qstep" size="20" type="number" value=0.001 > <input name="qnum" size="20" type="number" value=2000 ></p>
+</blockquote>
+<h5 id="concentration-of-protein-solution">Concentration of protein solution</h5>
+<ul>
+<li>Directly give the molarity of protein solutions</li>
+</ul>
+<blockquote>
+<p><input name="mol" size="20" type="number" value=2 > mM</p>
 </blockquote>
 <ul>
-<li>The molarity of Protein Solutions</li>
+<li>Or calculate from the Molecular Weight and mass concentration</li>
 </ul>
 <blockquote>
-<p><input name="mol" size="20" type="number" value=0.002 /> mol/l</p>
-</blockquote>
-<ul>
-<li>Or the Molecular Weight and concentration</li>
-</ul>
-<blockquote>
-<p><input name="molWght" size="20" type="number"/> Da <input name="concent" size="20" type="number"/> mg/ml</p>
-</blockquote>
-<ul>
-<li>start of q, interval of q, Number of q</li>
-</ul>
-<blockquote>
-<p><input name="qstart" size="20" type="number" value=0.001 /> <input name="qstep" size="20" type="number" value=0.001 /> <input name="qnum" size="20" type="number" value=2000 /></p>
+<p><input name="molWght" size="20" type="number"> kDa <input name="concent" size="20" type="number"> mg/ml</p>
 </blockquote>
 <blockquote>
-<p><input onclick="predict()" type="button" value="Predict!"> <input type="reset" value="Clear Entries"> <input onclick="FillForm('fmasq')" type="button" value="Input Example"></p>
+<p><input onclick="predict()" type="button" value="Predict!"> <input type="reset" value="Clear Entries"> <input onclick="FillForm('fmapsq')" type="button" value="Input Example"></p>
 </blockquote>
 </form>
 <h3 id="output">Output</h3>
 <blockquote>
-<p>simga: <code class="eq_disp" id="protein_sigma"> </code></p>
+<p>diam: <code class="eq_disp" id="protein_sigma"> </code></p>
 </blockquote>
 <blockquote>
-<p>molarity: <code class="eq_disp" id="protein_mol"> </code></p>
+<p>Cmol: <code class="eq_disp" id="protein_mol"> </code></p>
+</blockquote>
+<blockquote>
+<p>eta: <code class="eq_disp" id="protein_eta"> </code></p>
 </blockquote>
 <h4 id="data">Data</h4>
-<p>1st column, q; 2nd column, FMAPSq;</p>
+<p>1st column, <em>q</em>; 2nd column, <em>FMAPS(q)</em>; 3nd column, <em>rho*(f-f<sub>HS</sub>)</em>; 4th column <em>PY</em></p>
 <textarea id="textArea" style="position: relative; height:40vh; width:80vw"></textarea>
 <p><br> <button id="save" type="button" value="save"> Save data </button></p>
 <h4 id="figure">Figure</h4>
@@ -67,4 +73,7 @@
 </canvas>
 </div>
 <script src="js/formfill.js"></script>
-<script src="js/FMAPSq.js"></script>
+<script src="js/fmapsq.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/utils.js"></script>

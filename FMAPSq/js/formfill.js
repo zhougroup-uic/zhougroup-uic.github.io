@@ -27,6 +27,8 @@ function FillFMAPSq(formname) {
     //var file = new File([],filename);
     //fill(formname,"file-input",file);
     fill(formname,"simga",sigma);
+    fill(formname,"molWght",14.3);
+    fill(formname,"concent",20);
 }
 
 function FillReSMAPidp(formname) {

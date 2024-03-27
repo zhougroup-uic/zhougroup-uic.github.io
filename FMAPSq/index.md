@@ -16,9 +16,7 @@ interactions (FMAP) approach.
 
 It takes the W(r) profile and volume-excluded diameter as input to produce the structure factors, S(q), at targeted concentration, bridged via percus-yevick approximation.
 
-The FMAPB2 that provides the input info could be accessed from  [FMAPB2 web server](https://pipe.rcc.fsu.edu/fmapb2/) or a standalone version via [FMAPB2 registration](https://forms.office.com/r/nCWK1Rhk9L) or [direct link](https://github.com/zhougroup-uic/fmapb2). The registration infomation will only be used for updating notice and user statistics. 
-
-The javascript for FMAPS(q) to run in commad line are also available via [FMAPS(q) registration](https://forms.office.com/r/Q11wQ63ZZs) or [direct link](https://github.com/zhougroup-uic/fmapsq). 
+The FMAPB2 that provides the input info could be accessed from  [FMAPB2 web server](https://pipe.rcc.fsu.edu/fmapb2/). A standalone version of FMAPB2 and FMAPS(q) are aviable via [user registration](https://forms.office.com/r/nCWK1Rhk9L). The registration infomation will only be used for updating notice and user statistics. 
 
 #### Reference:
 * S. Qin and H.-X. Zhou, Calculating Structure Factors of Protein Solutions by Atomistic Modeling of Protein-Protein Interactions, in submission.
@@ -39,19 +37,19 @@ The javascript for FMAPS(q) to run in commad line are also available via [FMAPS(
 
 ##### Range of q values for outputting
 
-* the starting value of q, the step size for incrementing, the number of values
+* The starting value of q, the step size for incrementing, the number of values
 
 > <input name="qstart" size="20" type="number" value=0.001 > <input name="qstep" size="20" type="number" value=0.001 > <input name="qnum" size="20" type="number" value=2000 >
 
 ##### Concentration of protein solution
 
-* Directly give the molarity of protein solutions
+* Calculate from the Molecular Weight and mass concentration
 
-> <input name="mol" size="20" type="number" value=2 > mM
+> Molecular Weight: <input name="molWght" size="20" type="number" > kDa; Mass concentration: <input name="concent" size="20" type="number" > mg/ml
 
-* Or leave the box above empty and calculate from the Molecular Weight and mass concentration
+* Or directly give the molarity of protein solutions; Leave it empty if already filled above two
 
-> Molecular Weight: <input name="molWght" size="20" type="number"> kDa; Mass concentration: <input name="concent" size="20" type="number"> mg/ml
+> <input name="mol" size="20" type="number" > mM
 
 > <input onclick="predict()" type="button" value="Predict!">
 <input type="reset" value="Clear Entries">

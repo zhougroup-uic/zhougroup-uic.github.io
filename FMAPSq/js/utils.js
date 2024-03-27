@@ -55,8 +55,8 @@ function predict() {
     const protein_sigma= document.getElementById('protein_sigma');
     const protein_mol = document.getElementById('protein_mol');
     const protein_eat = document.getElementById('protein_eta');
-    protein_sigma.innerHTML = diam;
-    console.log(Cmol);
+    protein_sigma.innerHTML = `${diam} Å`;
+    //console.log(Cmol);
     if (Cmol==0){
         if ((mW!=0) && (mCon!=0)){
             Cmol=mCon/mW;
@@ -65,7 +65,7 @@ function predict() {
             abort();
         }
     }
-    protein_mol.innerHTML = Cmol;
+    protein_mol.innerHTML = `${Cmol} mol/L`;
     const eta=getEta(Cmol,diam/2.0);
     if (eta>0.5){
         protein_eat.innerHTML = `${eta} > 0.5. Warning: the result is not reliable.`

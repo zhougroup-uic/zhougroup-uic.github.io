@@ -3,23 +3,16 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<h1 id="fmapsq-calculating-structure-factors-of-protein-solutions-by-atomistic-modeling-of-protein-protein-interactions">
-  FMAPS(q): Calculating Structure Factors of Protein Solutions by Atomistic Modeling of Protein-Protein Interactions</h1>
-<p><img src="images/FMAPSq.png" /></p>
+<h1 id="fmapsq-calculating-structure-factors-of-protein-solutions-by-atomistic-modeling-of-protein-protein-interactions">FMAPS(q): Calculating Structure Factors of Protein Solutions by Atomistic Modeling of Protein-Protein Interactions</h1>
+<p><img src="images/FMAPSq.png" style="width:80.0%" /></p>
 <h2 id="method-at-a-glance">Method at a Glance</h2>
-<p>FMAPS(q) is a code for calculating the structure factor, S(q), of a protein solution, by extending our fast Fourier transform-based 
-  modeling of atomistic protein-protein interactions (FMAP) approach. It takes the potential of mean force W(R) along the center-center 
-  distance of a pair of protein molecules and the protein diameter d as input. Both W(R) and d can be obtained from our 
-  <a href="https://pipe.rcc.fsu.edu/fmapb2/">FMAPB2 web server</a>. Users can also download stand-alone versions of FMAPS(q) and FMAPB2 
-  by clicking </p>
-<p> <a href="https://forms.office.com/r/nCWK1Rhk9L">registration to download software</a> </p>
-<p> The registration infomation will only be used for update notices and user statistics.</p>
-<h4 id="References">References:</h4>
+<p>FMAPS(q) is a code for calculating the structure factor, S(q), of a protein solution, by extending our fast Fourier transform-based modeling of atomistic protein-protein interactions (FMAP) approach. It takes the potential of mean force W(R) along the center-center distance of a pair of protein molecules and the protein diameter d as input. Both W(R) and d can be obtained from our <a href="https://pipe.rcc.fsu.edu/fmapb2/">FMAPB2 web server</a>. Users can also download stand-alone versions of FMAPS(q) and FMAPB2 by clicking</p>
+<p><a href="https://forms.office.com/r/nCWK1Rhk9L">registration to download software</a></p>
+<p>The registration infomation will only be used for update notices and user statistics.</p>
+<h4 id="references">References:</h4>
 <ul>
-<li>S. Qin and H.-X. Zhou (2019), Calculation of Second Virial Coefficients of Atomistic Proteins Using Fast Fourier Transform, J Phys 
-  Chem B 123, 8203-8215.</li>
-<li>S. Qin and H.-X. Zhou (2024), Calculating Structure Factors of Protein Solutions by Atomistic Modeling of Protein-Protein Interactions, 
-  <a href="https://www.biorxiv.org/content/10.1101/2024.03.27.587040v1">biorxiv</a>.</li>
+<li>S. Qin and H.-X. Zhou (2019), Calculation of Second Virial Coefficients of Atomistic Proteins Using Fast Fourier Transform, J Phys Chem B 123, 8203-8215.</li>
+<li>S. Qin and H.-X. Zhou (2024), Calculating Structure Factors of Protein Solutions by Atomistic Modeling of Protein-Protein Interactions, <a href="https://www.biorxiv.org/content/10.1101/2024.03.27.587040v1">biorxiv</a></li>
 </ul>
 <h2 id="prediction">Prediction</h2>
 <h5 id="protein-infomation">Protein infomation</h5>
@@ -36,45 +29,42 @@
 <blockquote>
 <p><input name="simga" size="20" type="number"> Å</p>
 </blockquote>
-<h5 id="range-of-q-values-for-outputting">q values for outputting S(q)</h5>
+<h5 id="q-values-for-outputting-sq">q values for outputting S(q)</h5>
 <ul>
 <li>starting value of q, step size, number of q values</li>
 </ul>
 <blockquote>
-<p><input name="qstart" size="20" type="number" value=0.001 > <input name="qstep" size="20" type="number" value=0.001 > <input name="qnum" 
-  size="20" type="number" value=2000 ></p>
+<p><input name="qstart" size="20" type="number" value=0.001 > <input name="qstep" size="20" type="number" value=0.001 > <input name="qnum" size="20" type="number" value=2000 ></p>
 </blockquote>
-<h5 id="concentration-of-protein-solution">Protein concentration</h5>
+<h5 id="protein-concentration">Protein concentration</h5>
 <ul>
 <li>Convert to molarity from mass concentration and molecular mass</li>
 </ul>
 <blockquote>
-<p>Molecular mass: <input name="molWght" size="20" type="number" > kDa; Mass concentration: <input name="concent" size="20" type="number" >
-  mg/mL</p>
+<p>Mass concentration: <input name="concent" size="20" type="number" > mg/ml; Molecular mass: <input name="molWght" size="20" type="number" > kDa</p>
 </blockquote>
 <ul>
-<li>Or directly give the molarity; leave mpty if already filled mass concentration</li>
+<li>Or directly give the molarity; leave empty if already filled above mass concentration</li>
 </ul>
 <blockquote>
 <p><input name="mol" size="20" type="number" > mM</p>
 </blockquote>
 <blockquote>
-<p><input onclick="predict()" type="button" value="Predict!"> <input type="reset" value="Clear Entries"> <input onclick="FillForm('fmapsq')"
-  type="button" value="Input Example"></p>
+<p><input onclick="predict()" type="button" value="Predict!"> <input type="reset" value="Clear Entries"> <input onclick="FillForm('fmapsq')" type="button" value="Input Example"></p>
 </blockquote>
 </form>
 <h3 id="output">Output</h3>
 <blockquote>
-<p>diameter: <code class="eq_disp" id="protein_sigma"> </code></p>
+<p>diameter: <code class="eq_disp" id="protein_sigma" > </code></p>
 </blockquote>
 <blockquote>
-<p>Molarity: <code class="eq_disp" id="protein_mol"> </code></p>
+<p>Molarity: <code class="eq_disp" id="protein_mol" > </code></p>
 </blockquote>
 <blockquote>
 <p>Volume fraction: <code class="eq_disp" id="protein_eta"> </code></p>
 </blockquote>
 <h4 id="data">Data</h4>
-<p>1st column, <em>q</em>; 2nd column, <em>S(q)</em>; 3nd column, <em>&#961*(f^-f^<sub>HS</sub>)</em>; 4th column, <em>S<sub>PY<s/sub></em></p>
+<p>1st column, <em>q</em>; 2nd column, <em>S(q)</em>; 3nd column, <em>ρ*(f^-f^<sub>HS</sub>)</em>; 4th column, <em>S<sub>PY<sub></em></p>
 <textarea id="textArea" style="position: relative; height:40vh; width:80vw"></textarea>
 <p><br> <button id="save" type="button" value="save"> Save data </button></p>
 <h4 id="figure">Figure</h4>

@@ -65,12 +65,12 @@ function predict() {
             abort();
         }
     }
-    protein_mol.innerHTML = `${Cmol} mol/L`;
+    protein_mol.innerHTML = `${(Cmol*1000).toPrecision(4)} mM`;
     const eta=getEta(Cmol,diam/2.0);
     if (eta>0.5){
-        protein_eat.innerHTML = `${eta} > 0.5. Warning: the result is not reliable.`
+        protein_eat.innerHTML = `${eta.toPrecision(4)} > 0.5. Warning: the result is not reliable.`
     }else{
-        protein_eat.innerHTML = eta;
+        protein_eat.innerHTML = eta.toPrecision(4);
     }
     const result = fmapsq(fname,diam,qstart,qstep,nq,Cmol);
     const textarea = document.getElementById('textArea')

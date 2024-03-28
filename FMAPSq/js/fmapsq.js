@@ -47,8 +47,9 @@ function readrdf(fname) {
     const gr = [];
     for (let i=0;i<lines.length-1;i++) {
         line =lines[i];
-        const [xi, gri] = line.split(' ').slice(0, 2);
-        //console.log(line,xi,gri);
+        const [xi, gri] = line.trim().split(/\s+/).slice(0, 2);
+        //console.log(line);
+        //console.log(xi,gri);
         x.push(parseFloat(xi));
         gr.push(parseFloat(gri));
     }

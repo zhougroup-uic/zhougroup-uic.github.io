@@ -86,6 +86,7 @@ function FillForm(formname) {
     switch (formname) {
         case 'fmapsq':
             FillFMAPSq(formname);
+            break;
         case 'seqdyn':
             FillSeqDyn(formname);
             break;

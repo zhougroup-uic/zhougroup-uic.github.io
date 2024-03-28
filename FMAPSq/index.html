@@ -13,8 +13,8 @@
   <a href="https://pipe.rcc.fsu.edu/fmapb2/">FMAPB2 web server</a>. Users can also download stand-alone versions of FMAPS(q) and FMAPB2 
   by clicking </p>
 <p> <a href="https://forms.office.com/r/nCWK1Rhk9L">registration to download software</a> </p>
-<p> The registration infomation will only be used for updating notice and user statistics.</p>
-<h4 id="References">Reference:</h4>
+<p> The registration infomation will only be used for update notices and user statistics.</p>
+<h4 id="References">References:</h4>
 <ul>
 <li>S. Qin and H.-X. Zhou (2019), Calculation of Second Virial Coefficients of Atomistic Proteins Using Fast Fourier Transform, J Phys 
   Chem B 123, 8203-8215.</li>
@@ -31,47 +31,50 @@
 <p><input type="file" name="file-input" onchange="rdfchange()"></p>
 </blockquote>
 <ul>
-<li>The volume-excluded diameter</li>
+<li>The protein diameter</li>
 </ul>
 <blockquote>
 <p><input name="simga" size="20" type="number"> Å</p>
 </blockquote>
-<h5 id="range-of-q-values-for-outputting">Range of q values for outputting</h5>
+<h5 id="range-of-q-values-for-outputting">q values for outputting S(q)</h5>
 <ul>
-<li>The starting value of q, the step size for incrementing, the number of values</li>
+<li>starting value of q, step size, number of q values</li>
 </ul>
 <blockquote>
-<p><input name="qstart" size="20" type="number" value=0.001 > <input name="qstep" size="20" type="number" value=0.001 > <input name="qnum" size="20" type="number" value=2000 ></p>
+<p><input name="qstart" size="20" type="number" value=0.001 > <input name="qstep" size="20" type="number" value=0.001 > <input name="qnum" 
+  size="20" type="number" value=2000 ></p>
 </blockquote>
-<h5 id="concentration-of-protein-solution">Concentration of protein solution</h5>
+<h5 id="concentration-of-protein-solution">Protein concentration</h5>
 <ul>
-<li>Calculate from the Molecular Weight and mass concentration</li>
+<li>Convert to molarity from mass concentration and molecular mass</li>
 </ul>
 <blockquote>
-<p>Molecular Weight: <input name="molWght" size="20" type="number" > kDa; Mass concentration: <input name="concent" size="20" type="number" > mg/ml</p>
+<p>Molecular mass: <input name="molWght" size="20" type="number" > kDa; Mass concentration: <input name="concent" size="20" type="number" >
+  mg/mL</p>
 </blockquote>
 <ul>
-<li>Or directly give the molarity of protein solutions; Leave it empty if already filled above two</li>
+<li>Or directly give the molarity; leave mpty if already filled mass concentration</li>
 </ul>
 <blockquote>
 <p><input name="mol" size="20" type="number" > mM</p>
 </blockquote>
 <blockquote>
-<p><input onclick="predict()" type="button" value="Predict!"> <input type="reset" value="Clear Entries"> <input onclick="FillForm('fmapsq')" type="button" value="Input Example"></p>
+<p><input onclick="predict()" type="button" value="Predict!"> <input type="reset" value="Clear Entries"> <input onclick="FillForm('fmapsq')"
+  type="button" value="Input Example"></p>
 </blockquote>
 </form>
 <h3 id="output">Output</h3>
 <blockquote>
-<p>diam: <code class="eq_disp" id="protein_sigma"> </code></p>
+<p>diameter: <code class="eq_disp" id="protein_sigma"> </code></p>
 </blockquote>
 <blockquote>
-<p>Cmol: <code class="eq_disp" id="protein_mol"> </code></p>
+<p>Molarity: <code class="eq_disp" id="protein_mol"> </code></p>
 </blockquote>
 <blockquote>
-<p>eta: <code class="eq_disp" id="protein_eta"> </code></p>
+<p>Volume fraction: <code class="eq_disp" id="protein_eta"> </code></p>
 </blockquote>
 <h4 id="data">Data</h4>
-<p>1st column, <em>q</em>; 2nd column, <em>FMAPS(q)</em>; 3nd column, <em>rho*(f-f<sub>HS</sub>)</em>; 4th column, <em>PY</em></p>
+<p>1st column, <em>q</em>; 2nd column, <em>S(q)</em>; 3nd column, <em>&#961*(f^-f^<sub>HS</sub>)</em>; 4th column, <em>S<sub>PY<s/sub></em></p>
 <textarea id="textArea" style="position: relative; height:40vh; width:80vw"></textarea>
 <p><br> <button id="save" type="button" value="save"> Save data </button></p>
 <h4 id="figure">Figure</h4>

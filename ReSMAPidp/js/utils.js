@@ -38,7 +38,7 @@ function seqchk(searchKey) {
     searchKey = searchKey.replace(/[0-9 \t\r\n]/g, "");
     //searchKey = searchKey.toUpperCase();
     //searchKey = searchKey.replace(/\/{2}$/, "");
-    if (!searchKey.match(/^[ABCDEFGHIKLMNPQRSTUVWXYZ\-\*.]+$/)) {
+    if (!searchKey.match(/^[ABCDEFGHIKLMNPQRSTUVWXYZabcdefghiklmnpqrstuvwxyz\-\*.]+$/)) {
         alert("Invalid amino sequence found.\nPlease check the input sequence.\n\n");
         return "";
     }

@@ -1,8 +1,12 @@
-const { cos, sin, PI } = Math;
+const {
+    cos,
+    sin,
+    PI
+} = Math;
 const constantsN_A = 6.02214076e23;
 //const fs = require('fs');
 
-function getEta(molarity,R){
+function getEta(molarity, R) {
     const numdens = constantsN_A * molarity * 1e-27;
     const eta = (4.0 / 3.0) * PI * R ** 3 * numdens;
     return eta;
@@ -41,12 +45,12 @@ function PercusYevick(k, R, molarity = null, eta = null) {
 
 function readrdf(fname) {
     var lines;
-    lines=rdfdata.split(/\r?\n/);
+    lines = rdfdata.split(/\r?\n/);
     //console.log('lines\n',lines);
     const x = [];
     const gr = [];
-    for (let i=0;i<lines.length-1;i++) {
-        line =lines[i];
+    for (let i = 0; i < lines.length - 1; i++) {
+        line = lines[i];
         const [xi, gri] = line.trim().split(/\s+/).slice(0, 2);
         //console.log(line);
         //console.log(xi,gri);
@@ -91,7 +95,7 @@ function Mayer(gr, x, R) {
     return mr;
 }
 
-function fmapsq(fname,sigma,qstart,qstep,nq,mol){
+function fmapsq(fname, sigma, qstart, qstep, nq, mol) {
     //console.log(fname,sigma,qstart,qstep,nq,mol);
     const [gr, x] = readrdf(fname);
     let qs = [];
@@ -108,7 +112,7 @@ function fmapsq(fname,sigma,qstart,qstep,nq,mol){
     //return qs,qm,PY
     let output = "";
     for (let i = 0; i < qs.length; i++) {
-        let row=`${qs[i].toFixed(3)} ${(1.0 / (1.0 / PY[i] - qm[i] * numd)).toExponential(4)} ${(qm[i] * numd).toExponential(4)} ${PY[i].toExponential(4)} \n`;
+        let row = `${qs[i].toFixed(3)} ${(1.0 / (1.0 / PY[i] - qm[i] * numd)).toExponential(4)} ${(qm[i] * numd).toExponential(4)} ${PY[i].toExponential(4)} \n`;
         //console.log(qs[i], 1.0 / (1.0 / PY[i] - qm[i] * numd), qm[i] * numd, PY[i]);      
         output += row;
     }
@@ -117,7 +121,7 @@ function fmapsq(fname,sigma,qstart,qstep,nq,mol){
 }
 
 function usage(prog) {
-    console.log(`Usage: nodejs ${prog} Bltz.txt diam qstrt qstp Nq Cmol`);  
+    console.log(`Usage: nodejs ${prog} Bltz.txt diam qstrt qstp Nq Cmol`);
     console.log(`    Or nodejs ${prog} Bltz.txt diam qstrt qstp Nq Cmas MW`);
 }
 /*

@@ -29,6 +29,7 @@ function FillReSMAPidp(formname) {
     //fill(formname,"emailAddr",mstr);
     fill(formname, "userInput", seq);
     //fill(formname,"helix","No");
+    document.getElementById('helix_no').checked = true;
 }
 
 function FillWESA(formname) {

@@ -58,10 +58,10 @@ function predict() {
     let result = '';
     if (helix_yes.checked) {
         helix.innerHTML = "Yes";
-        result = ReSMAPidp('-idp', seq);
+        result = ReSMAPidp('-amp', seq);
     } else {
         helix.innerHTML = "No";
-        result = ReSMAPidp('-all', seq);
+        result = ReSMAPidp('-idp', seq);
     }
     let textarea = document.getElementById('textArea')
     textarea.innerHTML = result;

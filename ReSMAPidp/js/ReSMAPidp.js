@@ -180,12 +180,16 @@ function usage(prog) {
 }
 
 function ReSMAPidp(mode, seq) {
-    let params_idp3 = [2.4279041884730184, 0.2574548665297834,
-        0.5932307355837573
-    ];
-    let params_all3 = [2.5190839716705775, 0.7585077980716294,
-        1.028836074588618
-    ];
+    //update params according pipe on 20240729
+    //let params_idp3 = [2.4279041884730184, 0.2574548665297834,
+    //    0.5932307355837573
+    //];
+    let params_idp3 = [2.4285569458914535, 0.2570263325454291, 0.592708804377946];
+    //let params_all3 = [2.5190839716705775, 0.7585077980716294,
+    //    1.028836074588618
+    //];
+    //let params_all3 = [2.3395676914539214, 0.6303288268416439, 1.1373651203984052];
+    let params_all3 = [2.288506973625139, 0.6423574084106854, 1.1647943196641197];
     let pro = new Protein(seq);
     var params;
     if ((!pro.valid())) {
@@ -194,7 +198,7 @@ function ReSMAPidp(mode, seq) {
     if ((mode === "-idp")) {
         params = new Params(params_idp3);
     } else {
-        if ((mode === "-all")) {
+        if ((mode === "-amp")) {
             params = new Params(params_all3);
         } else {
             if ((mode === "-scl")) {

@@ -43,7 +43,7 @@ function mul(lst, val) {
 function SILC_MODEL(Prot, prefactor, params) {
     let lsequence = Prot.convert();
     let prediction = [];
-    for (let i = 0; i < lsequence.length; i++) {
+    for (let i = 12; i < lsequence.length-12; i++) {
         let res_params_i = params.vars[lsequence[i]].slice((0))[0];
         let p = 1.0;
         for (let j = 0; j < lsequence.length; j++) {
@@ -185,7 +185,7 @@ function R2T2NMR(paramstr, seq) {
     //console.log("#AA Prd");
     let result = "";
     for (let i = 0; i < seq.length; i++) {
-        let row = `${seq[i]} ${prd[i+12].toFixed(2)} \n`;
+        let row = `${seq[i]} ${(100*prd[i]).toFixed(2)} \n`;
         result += row
         //console.log(seq[i], prd[i]);
     }

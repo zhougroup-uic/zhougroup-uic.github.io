@@ -31,10 +31,25 @@ function plot() {
     const ctx = document.getElementById('myChart').getContext('2d');
     const data = {
         datasets: [{
-            label: 'SeqDyn Prediction',
+            label: 'DIRseq Prediction',
             data: myprd,
             backgroundColor: 'rgb(255, 99, 132)'
         }],
+    };
+    const horizontalLinePlugin = {
+        id: 'horizontalLine',
+        afterDraw: (chart) => {
+            const yValue = chart.scales.y.getPixelForValue(50);
+            const ctx = chart.ctx;
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(chart.chartArea.left, yValue);
+            ctx.lineTo(chart.chartArea.right, yValue);
+            ctx.strokeStyle = 'Black';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.restore();
+        }
     };
     const config = {
         type: 'scatter',
@@ -53,7 +68,8 @@ function plot() {
                     }
                 }
             }
-        }
+        },
+        plugins: [horizontalLinePlugin]
     }
 
     if (typeof plot.myChart === 'undefined' || plot.myChart === null) {

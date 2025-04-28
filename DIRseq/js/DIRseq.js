@@ -86,7 +86,7 @@ function R2p(prd, s1, s2) {
     let out = Array(prd.length);
     // console.log("s1,s2,mean,sd,R2_th,R2_nm:",s1,s2,mean,sd,R2_th,R2_nm);
     for (let i = 0; i < prd.length; i++) {
-        out[i] = (1.0 + Math.tanh((prd[i] - R2_th) / R2_nm)) / 2.0;
+        out[i] = 1.0/(1.0 + Math.exp(-(prd[i] - R2_th) / R2_nm));
     }
     return out
 }
@@ -176,7 +176,7 @@ function R2T2NMR(paramstr, seq) {
     if ((!pro.valid())) {
         process.exit(1);
     }
-    let params_q = [1.3912, 1.2235, 1.1818, 1.1783, 1.1627, 1.1533, 1.1447, 1.1258, 1.1088, 1.107, 1.0894, 1.0702, 1.0544, 1.0434, 1.0414, 1.0395, 1.0378, 1.0169, 0.9993, 0.9838];
+    let params_q = [1.3912, 1.0395, 1.1818, 1.1783, 1.1627, 1.1533, 1.0395, 1.1258, 1.1088, 1.0395, 1.0894, 1.0702, 1.0544, 1.0434, 1.0414, 1.0395, 1.1088, 1.0169, 0.9993, 0.9838];
     params_all = params_q.concat(params_all);
     let params = new Params(params_all);
     let prd = SILCFunction(pro, params);

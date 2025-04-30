@@ -31,7 +31,7 @@ SeqDYN is a sequence-based method for predicting the NMR transverse relaxation r
 
 * Paste params as array ([b,s1,s2]):
 
-> <textarea cols="80" name="userParams">[0.5,1.5,14.0]</textarea> 
+> <textarea cols="80" name="userParams">[0.3,1.5,14.0]</textarea> 
 
 > <input onclick="predict()" type="button" value="Predict!">
 <input type="reset" value="Clear Entries">

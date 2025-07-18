@@ -16,7 +16,7 @@ DIRseq is a sequence-based method for predicting drug-interacting residues of an
 * M. MacAinsih, S. Qin, and H.-X. Zhou (2025). DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences, to be published.
 
 #### Download source code
-You can download the javascript code, DIRseq.js, DIRseq [here](js/DIRseq.js). To run, use the following command,
+You can download the javascript code, DIRseq.js, for DIRseq [here](js/DIRseq.js). To run, use the following command,
 
         nodejs DIRseq.js PROTEINSEQENCE
 

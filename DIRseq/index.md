@@ -6,15 +6,21 @@
 
 # DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences
 
-![](images/SeqDyn.png){width=80%}
+![](images/SeqDyn.png){width=45%}
 
 ## Method at a Glance
 
-DIRseq is for predicting drug-interacting residues based on SeqDYN.
-SeqDYN is a sequence-based method for predicting the NMR transverse relaxation rates of individual residues in an intrinsically disordered protein. For a central residue *n*, every other residue *i* contributes a multiplicative factor *f(i; n)*, which depends on the amino-acid type of residue *i* and the sequence distance |*i-n*|.
+DIRseq is a sequence-based method for predicting drug-interacting residues of an intrinsically disordered protein. For a central residue <em>n</em>, every other residue <em>i</em> contributes a multiplicative factor <em>f(i; n)</em>, which depends on the amino-acid type of residue <em>i</em> and the sequence distance |<em>i-n</em>|. The total factor of residue <em>n</em> is then converted to a propensity score via a sigmoid function.
 
 #### Reference:
-* DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences
+* M. MacAinsih, S. Qin, and H.-X. Zhou (2025). DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences, to be published.
+
+#### Download source code
+You can download the javascript code, DIRseq.js, DIRseq [here](js/DIRseq.js). To run, use the following command,
+
+    nodejs DIRseq.js PROTEINSEQENCE
+
+where "PROTEINSEQENCE" is the protein sequence in one-letter representation. 
 
 ## Prediction
 

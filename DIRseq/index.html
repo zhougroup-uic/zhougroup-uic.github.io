@@ -4,16 +4,17 @@
 </head>
 <body>
 <h1 id="dirseq-a-method-for-predicting-drug-interacting-residues-of-intrinsically-disordered-proteins-from-sequences">DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences</h1>
-<p><img src="images/DIRseq.png" style="width:45.0%" ></p>
+<p><img src="images/SeqDyn.png" style="width:45.0%" /></p>
 <h2 id="method-at-a-glance">Method at a Glance</h2>
 <p>DIRseq is a sequence-based method for predicting drug-interacting residues of an intrinsically disordered protein. For a central residue <em>n</em>, every other residue <em>i</em> contributes a multiplicative factor <em>f(i; n)</em>, which depends on the amino-acid type of residue <em>i</em> and the sequence distance |<em>i-n</em>|. The total factor of residue <em>n</em> is then converted to a propensity score via a sigmoid function.</p>
 <h4 id="reference">Reference:</h4>
 <ul>
 <li>M. MacAinsih, S. Qin, and H.-X. Zhou (2025). DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences, to be published.</li>
 </ul>
-<h4 id="stand-alone-usage">Stand alone usage</h4>
-<p>The predictor could be downloaded <a href="js/DIRseq.js">here</a>, and run with nodejs,</p>
-<pre><code>    nodejs DIRseq.js PROTEINSEQENCE</code></pre>
+<h4 id="download-source-code">Download source code</h4>
+<p>You can download the javascript code, DIRseq.js, DIRseq <a href="js/DIRseq.js">here</a>. To run, use the following command,</p>
+<pre><code>nodejs DIRseq.js PROTEINSEQENCE</code></pre>
+<p>where “PROTEINSEQENCE” is the protein sequence in one-letter representation.</p>
 <h2 id="prediction">Prediction</h2>
 <h4 id="enter-the-idp-or-idr-sequence-to-get-predicted-drug-interacting-residues-propensity">Enter the IDP (or IDR) sequence to get predicted drug-interacting residues propensity</h4>
 <form name="dirseq">

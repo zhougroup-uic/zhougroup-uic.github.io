@@ -18,7 +18,7 @@ DIRseq is a sequence-based method for predicting drug-interacting residues of an
 #### Download source code
 You can download the javascript code, DIRseq.js, DIRseq [here](js/DIRseq.js). To run, use the following command,
 
-    nodejs DIRseq.js PROTEINSEQENCE
+        nodejs DIRseq.js PROTEINSEQENCE
 
 where "PROTEINSEQENCE" is the protein sequence in one-letter representation. 
 

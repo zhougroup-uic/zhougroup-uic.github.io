@@ -166,7 +166,9 @@ class Protein {
 }
 
 function usage(prog) {
-    console.log(`Usage: ${prog} params PROTEINSEQENCE"`);
+    console.log(`Usage: ${prog} [params] PROTEINSEQENCE`);
+    console.log(`       params could in form like [],[0.3,1.5,14.0],
+                        or "[1.3912, 1.0395, 1.1818, 1.1783, 1.1627, 1.1533, 1.0395, 1.1258, 1.1088, 1.0395, 1.0894, 1.0702, 1.0544, 1.0434, 1.0414, 1.0395, 1.1088, 1.0169, 0.9993, 0.9838, 0.3, 1.5, 14.0]"`)
 }
 
 function R2T2NMR(paramstr, seq) {
@@ -177,7 +179,12 @@ function R2T2NMR(paramstr, seq) {
         process.exit(1);
     }
     let params_q = [1.3912, 1.0395, 1.1818, 1.1783, 1.1627, 1.1533, 1.0395, 1.1258, 1.1088, 1.0395, 1.0894, 1.0702, 1.0544, 1.0434, 1.0414, 1.0395, 1.1088, 1.0169, 0.9993, 0.9838];
-    params_all = params_q.concat(params_all);
+    if (params_all.length == 0){
+        params_all=[0.3,1.5,14.0]
+    }
+    if (params_all.length == 3){
+        params_all = params_q.concat(params_all);
+    }
     let params = new Params(params_all);
     let prd = SILCFunction(pro, params);
     var nt, ct;
@@ -193,12 +200,18 @@ function R2T2NMR(paramstr, seq) {
 }
 
 if (typeof require !== 'undefined' && require.main === module) {
-    if ((process.argv.length <= 3)) {
+    if (process.argv.length < 3) {
         usage(process.argv[1]);
         process.exit(1);
     }
-    let pfn = process.argv[2];
-    let seq = process.argv[3];
+    let pfn = "[]"
+    let seq = ""
+    if (process.argv.length == 3) {
+        seq = process.argv[2];
+    }else{
+        pfn = process.argv[2];
+        seq = process.argv[3];
+    }
     let result = R2T2NMR(pfn, seq);
     console.log(result);
 }

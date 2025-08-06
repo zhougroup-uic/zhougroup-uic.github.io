@@ -53,7 +53,6 @@ where "PROTEINSEQENCE" is the protein sequence in one-letter representation.
 
 #### Data
 1st column, amino acid; 2nd column, propensity of being a drug-interacting residue (on a scale from 0 to 100)
-[*Note: a uniform scaling factor may be required to get best match with measured results.*]
 
 <textarea id="textArea" style="position: relative; height:40vh; width:80vw"></textarea>
 

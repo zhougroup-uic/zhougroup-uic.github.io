@@ -6,7 +6,7 @@
 
 # DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences
 
-![](images/Dirseq.png){width=45%}
+![](images/DIRseq.png){width=45%}
 
 ## Method at a Glance
 

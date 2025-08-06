@@ -4,7 +4,7 @@
 </head>
 <body>
 <h1 id="dirseq-a-method-for-predicting-drug-interacting-residues-of-intrinsically-disordered-proteins-from-sequences">DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences</h1>
-<p><img src="images/SeqDyn.png" style="width:45.0%" /></p>
+<p><img src="images/Dirseq.png" style="width:45.0%" /></p>
 <h2 id="method-at-a-glance">Method at a Glance</h2>
 <p>DIRseq is a sequence-based method for predicting drug-interacting residues of an intrinsically disordered protein. For a central residue <em>n</em>, every other residue <em>i</em> contributes a multiplicative factor <em>f(i; n)</em>, which depends on the amino-acid type of residue <em>i</em> and the sequence distance |<em>i-n</em>|. The total factor of residue <em>n</em> is then converted to a propensity score via a sigmoid function.</p>
 <h4 id="reference">Reference:</h4>
@@ -48,7 +48,7 @@
 <p>Seqence: <code class="eq_disp" id="protein_seq"> </code></p>
 </blockquote>
 <h4 id="data">Data</h4>
-<p>1st column, amino acid; 2nd column, predicted <em>R</em><sub>2</sub> (in s<sup>-1</sup>) <br> [<em>Note: a uniform scaling factor may be required to get best match with measured results.</em>]</p>
+<p>1st column, amino acid; 2nd column, propensity of being a drug-interacting residue (on a scale from 0 to 100) [<em>Note: a uniform scaling factor may be required to get best match with measured results.</em>]</p>
 <textarea id="textArea" style="position: relative; height:40vh; width:80vw"></textarea>
 <p><br> <button id="save" type="button" value="save"> Save data </button></p>
 <h4 id="figure">Figure</h4>

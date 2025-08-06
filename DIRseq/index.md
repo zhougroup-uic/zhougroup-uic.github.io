@@ -6,7 +6,7 @@
 
 # DIRseq: a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences
 
-![](images/SeqDyn.png){width=45%}
+![](images/Dirseq.png){width=45%}
 
 ## Method at a Glance
 
@@ -52,7 +52,7 @@ where "PROTEINSEQENCE" is the protein sequence in one-letter representation.
 > Seqence: <code class="eq_disp" id="protein_seq"> </code>
 
 #### Data
-1st column, amino acid; 2nd column, predicted *R*<sub>2</sub> (in s<sup>-1</sup>) <br>
+1st column, amino acid; 2nd column, propensity of being a drug-interacting residue (on a scale from 0 to 100)
 [*Note: a uniform scaling factor may be required to get best match with measured results.*]
 
 <textarea id="textArea" style="position: relative; height:40vh; width:80vw"></textarea>

@@ -13,7 +13,7 @@
 DIRseq is a sequence-based method for predicting drug-interacting residues of an intrinsically disordered protein. For a central residue <em>n</em>, every other residue <em>i</em> contributes a multiplicative factor <em>f(i; n)</em>, which depends on the amino-acid type of residue <em>i</em> and the sequence distance |<em>i-n</em>|. The total factor of residue <em>n</em> is then converted to a propensity score via a sigmoid function.
 
 #### Reference:
-* M. MacAinsih, S. Qin, and H.-X. Zhou (2025). DIRseq as a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences. eLife 14, [RP107470](https://elifesciences.org/articles/107470).
+* M. MacAinsh, S. Qin, and H.-X. Zhou (2025). DIRseq as a method for predicting drug-interacting residues of intrinsically disordered proteins from sequences. eLife 14, [RP107470](https://elifesciences.org/articles/107470).
 
 #### Download source code
 You can download the javascript code, DIRseq.js, for DIRseq [here](js/DIRseq.js). To run, use the following command,

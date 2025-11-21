@@ -10,4 +10,4 @@
 
 - [FMAPSq](FMAPSq/index.html)
 
-- [FMAPIq](FMAPSq/index.html)
+- [FMAPIq](FMAPIq/index.html)

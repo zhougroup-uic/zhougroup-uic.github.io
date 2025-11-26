@@ -1,0 +1,109 @@
+<h1 id="fmapiq-pipeline---user-help">FMAPIq Pipeline - User Help</h1>
+<h2 id="session-management">Session Management</h2>
+<p>At the top of the interface:</p>
+<ul>
+<li><strong>Show session management</strong>: Check to reveal session loading options</li>
+<li><strong>Current Session ID</strong>: Displays your active session (auto-created if not specified)</li>
+<li><strong>Uptime</strong>: Shows application uptime in days</li>
+<li><strong>Client ID</strong>: Unique identifier for occupy system; edit to reclaim access</li>
+<li><strong>Occupy button</strong>: Click to occupy/release the system (1-hour automatic timeout)</li>
+</ul>
+<h3 id="loading-sessions">Loading Sessions</h3>
+<ul>
+<li><strong>Load Existing Session ID</strong>: Enter or select a session ID to load</li>
+<li><strong>Load from Archive</strong>: Upload a <code>.tgz</code> or <code>.tar.gz</code> archive file</li>
+<li><strong>Example session</strong>: Use session ID “example” to create a copy of example data</li>
+</ul>
+<hr />
+<h2 id="stage-1-energy-maps">Stage 1: Energy Maps</h2>
+<p>Generates energy maps from a PQR file with partial charges.</p>
+<h3 id="inputs">Inputs</h3>
+<ul>
+<li><strong>PQR File</strong>: Upload your protein structure file with partial charges</li>
+<li><strong>Ion Strength (M)</strong>: Ionic strength in molar (default: 0.15)</li>
+<li><strong>Temperature (C)</strong>: Temperature in Celsius (default: 25)</li>
+<li><strong>nrot</strong>: Number of rotations - 72, 576, or 4608 (default: 72)</li>
+<li><strong>escl</strong>: Energy scaling factor (default: 1.0)</li>
+<li><strong>vscl</strong>: Volume scaling factor; use negative for automatic calculation based on molecular weight</li>
+<li><strong>Threads</strong>: Number of CPU threads to use</li>
+<li><strong>Update Only</strong>: Check to reload existing Stage 1 results without recomputing</li>
+</ul>
+<h3 id="output">Output</h3>
+<p>Displays execution results including molecular weight, number of atoms, and completion status.</p>
+<hr />
+<h2 id="stage-2-simulation">Stage 2: Simulation</h2>
+<p>Runs Monte Carlo simulations to generate protein configurations.</p>
+<h3 id="concentration-options">Concentration Options</h3>
+<ul>
+<li><strong>Number of proteins</strong>: Number of protein molecules in the simulation box</li>
+<li><strong>Box Size (Å)</strong>: Simulation box dimension in Angstroms</li>
+</ul>
+<p><strong>Calculated values</strong> (displayed automatically): - Molecular Weight (Da) - Concentration (mg/mL) - Concentration (mM)</p>
+<h3 id="simulation-options">Simulation Options</h3>
+<ul>
+<li><strong>Replicates</strong>: Number of independent simulation replicates (default: 10)</li>
+<li><strong>Cycles</strong>: Number of Monte Carlo cycles per replicate (default: 10000)</li>
+<li><strong>Threads per Job</strong>: CPU threads allocated to each parallel job</li>
+<li><strong>Parallel Jobs</strong>: Automatically calculated (Total threads / Threads per Job)</li>
+<li><strong>Update Only</strong>: Check to reload existing Stage 2 results without recomputing</li>
+</ul>
+<h3 id="output-1">Output</h3>
+<p>Displays simulation progress and number of configurations generated.</p>
+<hr />
+<h2 id="stage-3-calculate-iq">Stage 3: Calculate I(q)</h2>
+<p>Calculates scattering intensity curves from simulation configurations.</p>
+<h3 id="inputs-1">Inputs</h3>
+<ul>
+<li><strong>Box Size (Å)</strong>: Same as Stage 2</li>
+<li><strong>Spacing</strong>: Grid spacing for scattering calculation (default: 2.0)</li>
+<li><strong>Threads</strong>: Number of CPU threads to use</li>
+<li><strong>Update Only</strong>: Check to reload existing Stage 3 results without recomputing</li>
+</ul>
+<h3 id="output-2">Output</h3>
+<p>Displays number of I(q) curves calculated and processing time.</p>
+<hr />
+<h2 id="plot-iq">Plot I(q)</h2>
+<p>Visualizes scattering intensity curves with customization options.</p>
+<h3 id="plot-options">Plot Options</h3>
+<ul>
+<li><strong>Show individual curves</strong>: Display all replicate curves (not just mean/std)</li>
+<li><strong>Show P(q) reference</strong>: Include P(q) form factor reference line</li>
+<li><strong>Log scale (x-axis)</strong>: Use logarithmic scale for q-axis</li>
+<li><strong>Log scale (y-axis)</strong>: Use logarithmic scale for intensity axis</li>
+<li><strong>Q min / Q max</strong>: Set q-range for plot</li>
+<li><strong>Y min / Y max</strong>: Set intensity range for plot</li>
+</ul>
+<h3 id="output-3">Output</h3>
+<p>Generates and displays the I(q) plot image.</p>
+<hr />
+<h2 id="download">Download</h2>
+<h3 id="direct-file-downloads">Direct File Downloads</h3>
+<ul>
+<li><strong>Iqs.stat.txt</strong>: Statistics file with mean and standard deviation</li>
+<li><strong>Iqs.txt</strong>: Full I(q) data for all replicates</li>
+</ul>
+<h3 id="pack-work-directory">Pack Work Directory</h3>
+<p>Create a compressed archive of your work directory.</p>
+<ul>
+<li><strong>Skip energy maps</strong>: Exclude energy map files to reduce archive size</li>
+<li><strong>Skip raw data</strong>: Exclude raw simulation data to reduce archive size</li>
+<li><strong>Pack Work Directory</strong>: Generate downloadable <code>.tgz</code> archive</li>
+</ul>
+<hr />
+<h2 id="cleanup">Cleanup</h2>
+<p>Manage session directories to free disk space.</p>
+<h3 id="options">Options</h3>
+<ul>
+<li><strong>Days threshold</strong>: Remove directories older than this many days (range: 7-365)</li>
+<li><strong>Calculate Size</strong>: Preview which directories will be removed and total size</li>
+<li><strong>Cleanup</strong>: Permanently delete old directories</li>
+</ul>
+<p><strong>Note</strong>: The ‘example’ directory is always excluded from cleanup.</p>
+<hr />
+<h2 id="tips">Tips</h2>
+<ol type="1">
+<li><strong>Update Only checkbox</strong>: Use this to reload results from a previous session without rerunning computations</li>
+<li><strong>System occupation</strong>: When occupied by another user, pipeline stages cannot run</li>
+<li><strong>Session persistence</strong>: Work directories are saved in the <code>sessions/</code> folder</li>
+<li><strong>Example data</strong>: Load session ID “example” to experiment with pre-computed data</li>
+</ol>

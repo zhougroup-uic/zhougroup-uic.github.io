@@ -25,7 +25,7 @@ Generates energy maps from a PQR file with partial charges.
 ### Inputs
 
 - **PQR File**: Upload your protein structure file with partial charges
-- **Ion Strength (M)**: Ionic strength in molar (default: 0.15)
+- **Ion Strength (M)**: Ionic strength in molar (default: 0.016)
 - **Temperature (C)**: Temperature in Celsius (default: 25)
 - **nrot**: Number of rotations - 72, 576, or 4608 (default: 72)
 - **escl**: Energy scaling factor (default: 1.0)
@@ -55,8 +55,8 @@ Runs Monte Carlo simulations to generate protein configurations.
 
 ### Simulation Options
 
-- **Replicates**: Number of independent simulation replicates (default: 10)
-- **Cycles**: Number of Monte Carlo cycles per replicate (default: 10000)
+- **Replicates**: Number of independent simulation replicates (default: 3)
+- **Cycles**: Number of Monte Carlo cycles per replicate (default: 20000)
 - **Threads per Job**: CPU threads allocated to each parallel job
 - **Parallel Jobs**: Automatically calculated (Total threads / Threads per Job)
 - **Update Only**: Check to reload existing Stage 2 results without recomputing
@@ -74,7 +74,7 @@ Calculates scattering intensity curves from simulation configurations.
 ### Inputs
 
 - **Box Size (Å)**: Same as Stage 2
-- **Spacing**: Grid spacing for scattering calculation (default: 2.0)
+- **Spacing**: Grid spacing for scattering calculation (default: 1.0)
 - **Threads**: Number of CPU threads to use
 - **Update Only**: Check to reload existing Stage 3 results without recomputing
 

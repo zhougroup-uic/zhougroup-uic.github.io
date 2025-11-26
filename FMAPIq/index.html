@@ -1,6 +1,127 @@
-<script
-	type="module"
-	src="https://gradio.s3-us-west-2.amazonaws.com/5.49.1/gradio.js"
-></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .header-section {
+            background: #ffffff;
+            padding: 30px 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        .header-section h1 {
+            margin: 0 0 20px 0;
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+        }
+        .summary-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .summary-section img {
+            width: 40%;
+            height: auto;
+            object-fit: contain;
+        }
+        .summary-text {
+            flex: 1;
+        }
+        .summary-text h2 {
+            color: #444;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+        .summary-text p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+        }
+        .summary-text .references {
+            font-size: 14px;
+            color: #666;
+        }
+        .mirror-selector {
+            background: #f5f5f5;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .mirror-selector label {
+            margin-right: 10px;
+            font-weight: 500;
+        }
+        .mirror-selector select {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+<script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/5.49.1/gradio.js"></script>
 
-<gradio-app src="https://qsb300-fmapiqtest.hf.space"></gradio-app>
+<div class="header-section">
+    <h1>FMAPIq Webserver: Fast calculation of small-angle scattering profiles from dense protein solutions</h1>
+    <div class="summary-section">
+        <img src="images/FMAPIq.png" alt="FMAPIq">
+        <div class="summary-text">
+            <h2>Method at a Glance</h2>
+            <p>
+                FMAPIq uses MAEPPI (Many-protein Atomistic Energy from Precomputed Pair Interaction) to calculate SAS profiles.
+                The method precomputes protein-protein interaction energies across all orientations using fast Fourier transforms,
+                stores them in lookup tables, then runs atomistic simulations to generate scattering profiles directly from simulation snapshots.
+                This maintains atomic-level accuracy while achieving the speed of simplified particle models.
+            </p>
+            <div class="references">
+                <strong>References:</strong><br>
+                Qin, S., &amp; Zhou, H.-X. (2025). Fast calculation of small-angle scattering profiles of dense protein solutions modeled at the all-atom level.
+                <em>PNAS</em>, 122(39), e2519265122. <a href="https://doi.org/10.1073/pnas.2519265122" target="_blank">https://doi.org/10.1073/pnas.2519265122</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mirror-selector">
+    <label for="mirror-select">Select Mirror Site:</label>
+    <select id="mirror-select" onchange="switchMirror()">
+        <option value="https://qsb300-fmapiqtest.hf.space">Mirror 1 (Primary)</option>
+        <option value="https://qsb300-fmapiqtest2.hf.space">Mirror 2</option>
+        <option value="https://qsb300-fmapiqtest3.hf.space">Mirror 3</option>
+    </select>
+    <a href="help.md" style="margin-left: 20px; text-decoration: none; color: #0066cc; font-weight: 500;">Help</a>
+</div>
+
+<gradio-app id="gradio-app" src="https://qsb300-fmapiqtest.hf.space"></gradio-app>
+
+<footer>
+    <div class="container">
+        <div style="padding-bottom: 30px">
+            This website is free and open to all users and there is no login requirement.
+        </div>
+    </div>
+</footer>
+
+<script>
+function switchMirror() {
+    const select = document.getElementById('mirror-select');
+    const gradioApp = document.getElementById('gradio-app');
+    gradioApp.setAttribute('src', select.value);
+}
+</script>
+</body>
+</html>

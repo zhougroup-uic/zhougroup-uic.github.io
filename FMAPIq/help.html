@@ -17,14 +17,14 @@
 <hr />
 <h2 id="stage-1-energy-table">Stage 1: Energy Table</h2>
 <p>Generates energy table from a PQR file with partial charges.</p>
-<h3 id="inputs">Inputs</h3>
+<h3 id="input">Input</h3>
 <ul>
 <li><strong>PQR File</strong>: Upload your protein structure file with partial charges</li>
 <li><strong>Ion Strength (M)</strong>: Ionic strength in molar (default: 0.016)</li>
 <li><strong>Temperature (C)</strong>: Temperature in Celsius (default: 25)</li>
 <li><strong>nrot</strong>: Number of rotations - 72, 576, or 4608 (default: 72)</li>
 <li><strong>escl</strong>: Energy scaling factor (default: 1.0)</li>
-<li><strong>vscl</strong>: Volume scaling factor; use negative for automatic calculation based on molecular weight</li>
+<li><strong>vscl</strong>: Nonpolar scaling factor; use negative for automatic calculation based on molecular weight</li>
 <li><strong>Threads</strong>: Number of CPU threads to use</li>
 <li><strong>Update Only</strong>: Check to reload existing Stage 1 results without recomputing</li>
 </ul>
@@ -41,7 +41,7 @@
 <p><strong>Calculated values</strong> (displayed automatically): - Molecular Weight (Da) - Concentration (mg/mL) - Concentration (mM)</p>
 <h3 id="simulation-options">Simulation Options</h3>
 <ul>
-<li><strong>Replicates</strong>: Number of independent simulation replicates (default: 3)</li>
+<li><strong>Replicates</strong>: Number of independent replicate simulations (default: 3)</li>
 <li><strong>Cycles</strong>: Number of Monte Carlo cycles per replicate (default: 20000)</li>
 <li><strong>Threads per Job</strong>: CPU threads allocated to each parallel job</li>
 <li><strong>Parallel Jobs</strong>: Automatically calculated (Total threads / Threads per Job)</li>
@@ -50,9 +50,9 @@
 <h3 id="output-1">Output</h3>
 <p>Displays simulation progress and number of configurations generated.</p>
 <hr />
-<h2 id="stage-3-calculate-iq">Stage 3: Calculate I(q)</h2>
+<h2 id="stage-3-iq-calculation">Stage 3: I(q) Calculation</h2>
 <p>Calculates scattering intensity curves from simulation configurations.</p>
-<h3 id="inputs-1">Inputs</h3>
+<h3 id="input-1">Input</h3>
 <ul>
 <li><strong>Box Size (Å)</strong>: Same as Stage 2</li>
 <li><strong>Spacing</strong>: Grid spacing for scattering calculation (default: 1.0)</li>
@@ -83,7 +83,7 @@
 <li><strong>Iqs.txt</strong>: Full I(q) data for all replicates</li>
 </ul>
 <h3 id="pack-work-directory">Pack Work Directory</h3>
-<p>Create a compressed archive of your work directory.</p>
+<p>Creates a compressed archive of your work directory.</p>
 <ul>
 <li><strong>Skip energy table</strong>: Exclude energy table files to reduce archive size</li>
 <li><strong>Skip raw data</strong>: Exclude raw simulation data to reduce archive size</li>
@@ -91,7 +91,7 @@
 </ul>
 <hr />
 <h2 id="cleanup">Cleanup</h2>
-<p>Manage session directories to free disk space.</p>
+<p>Manages session directories to free disk space.</p>
 <h3 id="options">Options</h3>
 <ul>
 <li><strong>Days threshold</strong>: Remove directories older than this many days (range: 7-365)</li>

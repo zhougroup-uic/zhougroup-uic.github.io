@@ -22,14 +22,14 @@ At the top of the interface:
 
 Generates energy table from a PQR file with partial charges.
 
-### Inputs
+### Input
 
 - **PQR File**: Upload your protein structure file with partial charges
 - **Ion Strength (M)**: Ionic strength in molar (default: 0.016)
 - **Temperature (C)**: Temperature in Celsius (default: 25)
 - **nrot**: Number of rotations - 72, 576, or 4608 (default: 72)
 - **escl**: Energy scaling factor (default: 1.0)
-- **vscl**: Volume scaling factor; use negative for automatic calculation based on molecular weight
+- **vscl**: Nonpolar scaling factor; use negative for automatic calculation based on molecular weight
 - **Threads**: Number of CPU threads to use
 - **Update Only**: Check to reload existing Stage 1 results without recomputing
 
@@ -55,7 +55,7 @@ Runs Monte Carlo simulations to generate protein configurations.
 
 ### Simulation Options
 
-- **Replicates**: Number of independent simulation replicates (default: 3)
+- **Replicates**: Number of independent replicate simulations (default: 3)
 - **Cycles**: Number of Monte Carlo cycles per replicate (default: 20000)
 - **Threads per Job**: CPU threads allocated to each parallel job
 - **Parallel Jobs**: Automatically calculated (Total threads / Threads per Job)
@@ -67,11 +67,11 @@ Displays simulation progress and number of configurations generated.
 
 ---
 
-## Stage 3: Calculate I(q)
+## Stage 3: I(q) Calculation
 
 Calculates scattering intensity curves from simulation configurations.
 
-### Inputs
+### Input
 
 - **Box Size (Å)**: Same as Stage 2
 - **Spacing**: Grid spacing for scattering calculation (default: 1.0)
@@ -112,7 +112,7 @@ Generates and displays the I(q) plot image.
 
 ### Pack Work Directory
 
-Create a compressed archive of your work directory.
+Creates a compressed archive of your work directory.
 
 - **Skip energy table**: Exclude energy table files to reduce archive size
 - **Skip raw data**: Exclude raw simulation data to reduce archive size
@@ -122,7 +122,7 @@ Create a compressed archive of your work directory.
 
 ## Cleanup
 
-Manage session directories to free disk space.
+Manages session directories to free disk space.
 
 ### Options
 

@@ -18,9 +18,9 @@ At the top of the interface:
 
 ---
 
-## Stage 1: Energy Maps
+## Stage 1: Energy Table
 
-Generates energy maps from a PQR file with partial charges.
+Generates energy table from a PQR file with partial charges.
 
 ### Inputs
 
@@ -33,7 +33,7 @@ Generates energy maps from a PQR file with partial charges.
 - **Threads**: Number of CPU threads to use
 - **Update Only**: Check to reload existing Stage 1 results without recomputing
 
-### Output
+### [Output](/FMAPIq/?session=example&stage1=1)
 
 Displays execution results including molecular weight, number of atoms, and completion status.
 
@@ -84,7 +84,7 @@ Displays number of I(q) curves calculated and processing time.
 
 ---
 
-## Plot I(q)
+## I(q) Plot
 
 Visualizes scattering intensity curves with customization options.
 
@@ -97,7 +97,7 @@ Visualizes scattering intensity curves with customization options.
 - **Q min / Q max**: Set q-range for plot
 - **Y min / Y max**: Set intensity range for plot
 
-### Output
+### [Output](/FMAPIq/?session=example&plot=1)
 
 Generates and displays the I(q) plot image.
 
@@ -114,7 +114,7 @@ Generates and displays the I(q) plot image.
 
 Create a compressed archive of your work directory.
 
-- **Skip energy maps**: Exclude energy map files to reduce archive size
+- **Skip energy table**: Exclude energy table files to reduce archive size
 - **Skip raw data**: Exclude raw simulation data to reduce archive size
 - **Pack Work Directory**: Generate downloadable `.tgz` archive
 

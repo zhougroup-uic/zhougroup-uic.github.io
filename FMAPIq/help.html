@@ -15,8 +15,8 @@
 <li><strong>Example session</strong>: Use session ID “example” to create a copy of example data</li>
 </ul>
 <hr />
-<h2 id="stage-1-energy-maps">Stage 1: Energy Maps</h2>
-<p>Generates energy maps from a PQR file with partial charges.</p>
+<h2 id="stage-1-energy-table">Stage 1: Energy Table</h2>
+<p>Generates energy table from a PQR file with partial charges.</p>
 <h3 id="inputs">Inputs</h3>
 <ul>
 <li><strong>PQR File</strong>: Upload your protein structure file with partial charges</li>
@@ -28,7 +28,7 @@
 <li><strong>Threads</strong>: Number of CPU threads to use</li>
 <li><strong>Update Only</strong>: Check to reload existing Stage 1 results without recomputing</li>
 </ul>
-<h3 id="output">Output</h3>
+<h3 id="output"><a href="/FMAPIq/?session=example&amp;stage1=1">Output</a></h3>
 <p>Displays execution results including molecular weight, number of atoms, and completion status.</p>
 <hr />
 <h2 id="stage-2-simulation">Stage 2: Simulation</h2>
@@ -62,7 +62,7 @@
 <h3 id="output-2">Output</h3>
 <p>Displays number of I(q) curves calculated and processing time.</p>
 <hr />
-<h2 id="plot-iq">Plot I(q)</h2>
+<h2 id="iq-plot">I(q) Plot</h2>
 <p>Visualizes scattering intensity curves with customization options.</p>
 <h3 id="plot-options">Plot Options</h3>
 <ul>
@@ -73,7 +73,7 @@
 <li><strong>Q min / Q max</strong>: Set q-range for plot</li>
 <li><strong>Y min / Y max</strong>: Set intensity range for plot</li>
 </ul>
-<h3 id="output-3">Output</h3>
+<h3 id="output-3"><a href="/FMAPIq/?session=example&amp;plot=1">Output</a></h3>
 <p>Generates and displays the I(q) plot image.</p>
 <hr />
 <h2 id="download">Download</h2>
@@ -85,7 +85,7 @@
 <h3 id="pack-work-directory">Pack Work Directory</h3>
 <p>Create a compressed archive of your work directory.</p>
 <ul>
-<li><strong>Skip energy maps</strong>: Exclude energy map files to reduce archive size</li>
+<li><strong>Skip energy table</strong>: Exclude energy table files to reduce archive size</li>
 <li><strong>Skip raw data</strong>: Exclude raw simulation data to reduce archive size</li>
 <li><strong>Pack Work Directory</strong>: Generate downloadable <code>.tgz</code> archive</li>
 </ul>

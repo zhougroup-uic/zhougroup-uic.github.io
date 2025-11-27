@@ -51,10 +51,15 @@
     <p><center><img src="images/FMAPIq.png" style="width:70.0%" /></center></p>
             <h2>Method at a Glance</h2>
             <p>
-                FMAPIq uses MAEPPI (<u>m</u>any-protein Atomistic Energy from Precomputed Pair Interaction) to calculate SAS profiles.The method precomputes protein-protein interaction energies across all orientations using fast Fourier transforms, stores them in lookup tables, then runs atomistic simulations to generate scattering profiles directly from simulation snapshots. This maintains atomic-level accuracy while achieving the speed of simplified particle models.
+                FMAPIq uses MAEPPI (<u>m</u>any-protein <u>a</u>tomistic <u>e</u>nergy from <u>p</u>recomputed <u>p</u>air <u>i</u>interaction) to drive Monte Carlo 
+                simulations of dense protein solutions and then use Sim2Iq to calculate small-angle scattering profiles, I(q). In MAEPPI, we first precompute the interaction 
+                energies of a protein pair at various relative displacements and relative orientations, and store them in a loopup table. In simulations of a many-protein 
+                system, we then obtain the total energy by looking up the energy for each protein pair. The fast calculation of protein pair energies were made possible 
+                by using the FMAP method, which is based on fast Fourier transform (FFT). Likewise, the I(q) calculation is sped up by applying FFT to simulation snapshots. 
+                FMAPIq maintains atomic-level accuracy while achieving the speed of Lennard-Jones particles.
             </p>
             <div class="references">
-                <strong>References:</strong><br>
+                <strong>Reference:</strong><br>
                 Qin, S., &amp; Zhou, H.-X. (2025). Fast calculation of small-angle scattering profiles of dense protein solutions modeled at the all-atom level.
                 <em>PNAS</em>, 122(39), e2519265122. <a href="https://doi.org/10.1073/pnas.2519265122" target="_blank">https://doi.org/10.1073/pnas.2519265122</a>
             </div>

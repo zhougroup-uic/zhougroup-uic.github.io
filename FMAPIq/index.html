@@ -18,35 +18,6 @@
             font-size: 24px;
             text-align: center;
         }
-        .summary-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-        }
-        .summary-section img {
-            width: 40%;
-            height: auto;
-            object-fit: contain;
-        }
-        .summary-text {
-            flex: 1;
-        }
-        .summary-text h2 {
-            color: #444;
-            font-size: 18px;
-            margin: 0 0 10px 0;
-        }
-        .summary-text p {
-            color: #555;
-            line-height: 1.6;
-            margin: 0 0 15px 0;
-        }
-        .summary-text .references {
-            font-size: 14px;
-            color: #666;
-        }
         .mirror-selector {
             background: #f5f5f5;
             padding: 15px;
@@ -76,24 +47,17 @@
 <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/5.49.1/gradio.js"></script>
 
 <div class="header-section">
-    <h1>FMAPIq Webserver: Fast calculation of small-angle scattering profiles from dense protein solutions</h1>
-    <div class="summary-section">
-        <img src="images/FMAPIq.png" alt="FMAPIq">
-        <div class="summary-text">
+    <h1>FMAPI(q): Fast calculation of small-angle scattering profiles from dense protein solutions</h1>
+    <p><center><img src="images/FMAPIq.png" style="width:70.0%" /></center></p>
             <h2>Method at a Glance</h2>
             <p>
-                FMAPIq uses MAEPPI (Many-protein Atomistic Energy from Precomputed Pair Interaction) to calculate SAS profiles.
-                The method precomputes protein-protein interaction energies across all orientations using fast Fourier transforms,
-                stores them in lookup tables, then runs atomistic simulations to generate scattering profiles directly from simulation snapshots.
-                This maintains atomic-level accuracy while achieving the speed of simplified particle models.
+                FMAPIq uses MAEPPI (Many-protein Atomistic Energy from Precomputed Pair Interaction) to calculate SAS profiles.The method precomputes protein-protein interaction energies across all orientations using fast Fourier transforms, stores them in lookup tables, then runs atomistic simulations to generate scattering profiles directly from simulation snapshots. This maintains atomic-level accuracy while achieving the speed of simplified particle models.
             </p>
             <div class="references">
                 <strong>References:</strong><br>
                 Qin, S., &amp; Zhou, H.-X. (2025). Fast calculation of small-angle scattering profiles of dense protein solutions modeled at the all-atom level.
                 <em>PNAS</em>, 122(39), e2519265122. <a href="https://doi.org/10.1073/pnas.2519265122" target="_blank">https://doi.org/10.1073/pnas.2519265122</a>
             </div>
-        </div>
-    </div>
 </div>
 
 <div class="mirror-selector">

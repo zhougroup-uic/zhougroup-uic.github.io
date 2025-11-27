@@ -51,12 +51,12 @@
     <p><center><img src="images/FMAPIq.png" style="width:70.0%" /></center></p>
             <h2>Method at a Glance</h2>
             <p>
-                FMAPIq uses MAEPPI (<u>m</u>any-protein <u>a</u>tomistic <u>e</u>nergy from <u>p</u>recomputed <u>p</u>air <u>i</u>interaction) to drive Monte Carlo 
+                FMAPIq uses MAEPPI (<u>m</u>any-protein <u>a</u>tomistic <u>e</u>nergy from <u>p</u>recomputed <u>p</u>air <u>i</u>nteraction) to drive Monte Carlo 
                 simulations of dense protein solutions and then use Sim2Iq to calculate small-angle scattering profiles, I(q). In MAEPPI, we first precompute the interaction 
-                energies of a protein pair at various relative displacements and relative orientations, and store them in a loopup table. In simulations of a many-protein 
-                system, we then obtain the total energy by looking up the energy for each protein pair. The fast calculation of protein pair energies were made possible 
-                by using the FMAP method, which is based on fast Fourier transform (FFT). Likewise, the I(q) calculation is sped up by applying FFT to simulation snapshots. 
-                FMAPIq maintains atomic-level accuracy while achieving the speed of Lennard-Jones particles.
+                energies of a protein pair at various relative displacements and relative orientations, and store them in a lookup table. In simulations of a many-protein 
+                system, we then obtain the total energy by looking up and adding up the interaction energyies of individual protein pairs. The fast calculation of protein 
+                pair energies were made possible by using the FMAP method, which is based on fast Fourier transform (FFT). Likewise, Sim2Iq calculations are sped up by 
+                applying FFT to simulation snapshots. FMAPIq maintains atomic-level accuracy while achieving the speed of Lennard-Jones particles.
             </p>
             <div class="references">
                 <strong>Reference:</strong><br>

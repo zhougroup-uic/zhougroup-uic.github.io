@@ -1,0 +1,46 @@
+<h1>Trajectory to PDB Converter</h1>
+
+Converting MAEPPI trajectory files to PDB format.
+
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/maeppi_traj2pdb.js"></script>
+<script src="js/traj2pdb_helper.js"></script>
+
+<h2 id="download-source-code">Download source code</h2>
+<p>You can download the javascript code, maeppi_traj2pdb.js, <a href="js/maeppi_traj2pdb.js">here</a>. To run, use the following command,</p>
+<pre><code>    nodejs maeppi_traj2pdb.js template.pdb trj --onlyCA --txt </code></pre>
+<p>where trj are config file from MAEPPI simulation.</p>
+
+<div class="container">
+  <h2>Upload Files</h2>
+
+  <div class="file-input">
+    <label for="templateFile">Template PDB File:</label>
+    <input type="file" id="templateFile" accept=".pdb,.pqr,.vdw" />
+  </div>
+
+  <div class="file-input">
+    <label for="trajFile">Trajectory File:</label>
+    <input type="file" id="trajFile" accept=".txt,.pdb,.dat" />
+  </div>
+
+  <div class="file-input">
+    <label>
+      <input type="checkbox" id="onlyCA" checked /> Only CA atoms
+    </label>
+    <label>
+      <input type="checkbox" id="exyz" /> Output in EXYZ format
+    </label>
+    <label>
+      <input type="checkbox" id="txt" checked /> Trajectory is text format
+    </label>
+  </div>
+
+  <button onclick="convertFiles()">Convert</button>
+  <button onclick="downloadResult()">Download Result</button>
+
+  <div class="output">
+    <h3>Output:</h3>
+    <pre id="output"></pre>
+  </div>
+</div>

@@ -6,6 +6,8 @@
 
 - [SeqDYNidp](SeqDYNidp/index.html)
 
+- [DIRseq](DIRseq/index.html)
+
 - [LLPS](LLPS/index.html)
 
 - [FMAPSq](FMAPSq/index.html)

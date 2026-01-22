@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aromatic Membrane Insertion Predictor</title>
+  <style>
+    body {
+      font-family: "Times New Roman", serif;
+      padding: 20px;
+      background-color: white;
+      /*color: #222;*/
+    }
+    h2 {
+      color: #3b3b98;
+    }
+    p.description {
+      font-size: 18px;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+    input, button, textarea {
+      font-size: 16px;
+      margin-top: 10px;
+      width: 100%;
+      font-family: "Times New Roman", serif;
+    }
+    button {
+      background-color: #6c5ce7;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #4834d4;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      font-family: "Times New Roman", serif;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #dfe6e9;
+      color: #2d3436;
+    }
+    tr:nth-child(even) {
+      background-color: #f1f2f6;
+    }
+    tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+    #figure-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+    #figure-container img {
+      max-width: 80%;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    #figure-container figcaption {
+      font-style: italic;
+      color: #636e72;
+    }
+  </style>
+</head>
+<body>
+
+<h2>AroMembIn: A predictor for membrane insertion of intrinsically disordered motifs that are centered at an aromatic amino acid (F, W, Y)</h2>
+
+<div id="figure-container">
+  <figure>
+    <img src="images/AroPred.png" alt="Membrane Protein Diagram">
+  </figure>
+</div>
+
+<section style="margin-top: 20px; background: #f9f9f9; padding: 15px;">
+  <h3>Method at a Glance</h3>
+  <p>
+    This tool scans a given protein sequence for 9-residue fragments centered on aromatic residues (F, W, Y).
+    Using a statistical model trained on the human proteome intrinsically disordered dataset, it computes a probability score based on the amino acid composition surrounding the center.
+    Fragments with a score above a threshold are classified as <strong>Inserters</strong>; others as <strong>Non-inserters</strong>.
+  </p>
+</section>
+
+
+<label for="proteinInput"><strong>Enter Protein Sequence:</strong></label>
+<textarea id="proteinInput" rows="4" placeholder="Example: RRNKFGINRTTGNWRGMLQRDLYSGLN"></textarea>
+
+<div style="margin-top: 15px;">
+  <button onclick="runPrediction()">Predict!</button>
+  <button onclick="clearEntry()">Clear Entry</button>
+  <button onclick="loadExample()">Input Example</button>
+</div>
+
+
+<div id="results"></div>
+
+
+<script>
+// Generalized sigmoid function
+function generalizedSigmoid(Q, Q_th, n) {
+  if (Q <= 0) return 0.0;
+  return 1 / (1 + Math.pow(Q_th / Q, n));
+}
+
+// Predict insertion likelihood for a fragment
+function modelPrediction(fragment, paramData) {
+  const { params, Q_th, n } = paramData;
+  let product = 1.0;
+
+  for (let i = 0; i < fragment.length; i++) {
+    if (i === 4) continue;
+    const aa = fragment[i];
+    if (!(aa in params)) continue;
+    product *= Math.max(1e-8, params[aa]);
+  }
+  return generalizedSigmoid(product, Q_th, n);
+}
+
+// Scan full protein sequence
+function scanProteinSequence(sequence) {
+  const results = [];
+  const centerAASet = new Set(["F", "W", "Y"]);
+  sequence = sequence.toUpperCase();
+
+  const paramSets = {
+    F: {
+      Q_th: 1e-6, n: 1,
+      params: {
+        A: 0.1951907671, C: 0.1396708296, D: 0.0713615647, E: 0.0699641825, F: 1.3082971445,
+        G: 0.1142484740, H: 0.1415801115, I: 0.5162228776, K: 0.0952443720, L: 0.6217718188,
+        M: 0.5061855115, N: 0.0837538685, P: 0.3147136219, Q: 0.0866569490, R: 0.3190153192,
+        S: 0.1652981813, T: 0.2172234066, V: 0.3474381885, W: 0.9300167630, Y: 0.3463826364
+      }
+    },
+    W: {
+      Q_th: 1e-6, n: 1,
+      params: {
+        A: 0.1820403546, C: 0.1173853027, D: 0.0689947531, E: 0.0682952757, F: 2.1682474964,
+        G: 0.1050872733, H: 0.1241434817, I: 0.5362312108, K: 0.0932490526, L: 0.6946869003,
+        M: 0.5002960423, N: 0.0816796578, P: 0.2864476707, Q: 0.0857114023, R: 0.2804312507,
+        S: 0.1576698796, T: 0.2046825844, V: 0.3630232787, W: 1.9050069048, Y: 0.3181005115
+      }
+    },
+    Y: {
+      Q_th: 0.1, n: 1,
+      params: {
+        A: 0.4686543709, C: 0.0100000000, D: 0.1368736488, E: 0.2684430452, F: 1.5433279174,
+        G: 0.2512691248, H: 0.1361540109, I: 1.2028110190, K: 0.2962662633, L: 1.2661790094,
+        M: 0.7261412791, N: 0.2102646483, P: 0.7210013196, Q: 0.3185187207, R: 0.8723102019,
+        S: 0.3091253949, T: 0.4193589532, V: 0.6819877708, W: 1.0760899081, Y: 0.8944416436
+      }
+    }
+  };
+
+  for (let i = 4; i < sequence.length - 4; i++) {
+    const fragment = sequence.slice(i - 4, i + 5);
+    const centerAA = fragment[4];
+
+    if (!centerAASet.has(centerAA)) continue;
+
+    const paramData = paramSets[centerAA];
+    const prediction = modelPrediction(fragment, paramData);
+    const classification = prediction > 0.5 ? 1 : 0;
+
+    results.push({ fragment, classification, score: prediction.toFixed(3) });
+  }
+
+  return results;
+}
+
+// Run prediction and render output
+function runPrediction() {
+  const input = document.getElementById("proteinInput").value.trim();
+  const results = scanProteinSequence(input);
+  const output = document.getElementById("results");
+
+  if (results.length === 0) {
+    output.innerHTML = "<p>No valid 9-residue fragments found centered on F, W, or Y.</p>";
+    return;
+  }
+
+  let html = "<table><tr><th>Motif</th><th>Score</th><th>Prediction</th></tr>";
+  results.forEach(r => {
+	const label = r.classification === 1 ? "Inserter" : "Non-inserter";
+	html += `<tr><td>${r.fragment}</td><td>${r.score}</td><td>${label}</td></tr>`;
+
+  });
+  html += "</table>";
+  output.innerHTML = html;
+}
+function clearEntry() {
+  document.getElementById("proteinInput").value = "";
+  document.getElementById("results").innerHTML = "";
+}
+
+function loadExample() {
+  const example = "RRNKFGINRTTGNWRGMLQRDLYSGLN";
+  document.getElementById("proteinInput").value = example;
+  runPrediction();
+}
+
+
+</script>
+
+</body>
+</html>
+

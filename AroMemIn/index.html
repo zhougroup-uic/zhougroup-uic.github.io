@@ -74,7 +74,7 @@
 </head>
 <body>
 
-<h2>AroMemIn: A predictor for membrane insertion of intrinsically disordered motifs that are centered at an aromatic amino acid (F, W, Y)</h2>
+<h2>AroMemIn: A predictor of membrane insertion by aromatic-centered motifs of intrinsically disordered proteins</h2>
 
 <div id="figure-container">
   <figure>
@@ -85,9 +85,10 @@
 <section style="margin-top: 20px; background: #f9f9f9; padding: 15px;">
   <h3>Method at a Glance</h3>
   <p>
-    This tool scans a given protein sequence for 9-residue fragments centered on aromatic residues (F, W, Y).
-    Using a statistical model trained on the human proteome intrinsically disordered dataset, it computes a probability score based on the amino acid composition surrounding the center.
-    Fragments with a score above a threshold are classified as <strong>Inserters</strong>; others as <strong>Non-inserters</strong>.
+AroMemIn scans a given protein sequence for 9-residue fragments centered on an aromatic residue (F, W, Y), and predicts whether the
+aromatic sidechain in each fragment inserts into the acyl chain region of membranes. The prediction is based on a mathematical model,
+where each flanking residue contributes a multiplicative factor to the membrane insertion score of the central aromatic residue. The model
+was trained on the intrinsically disordered regions of the human proteome.
   </p>
 </section>
 

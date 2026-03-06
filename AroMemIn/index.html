@@ -216,7 +216,7 @@ function scanProteinSequence(sequence) {
 
     const paramData = paramSets[centerAA];
     const { Q, score } = modelPrediction(fragment, paramData);
-    const classification = prediction > 0.5 ? 1 : 0;
+    const classification = score > 0.5 ? 1 : 0;
 
     results.push({ fragment, Q, classification, score: prediction.toFixed(3) });
   }

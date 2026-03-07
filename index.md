@@ -14,4 +14,4 @@
 
 - [FMAPIq](FMAPIq/index.html)
 
-- [AroMemIn](AroMemIn/index.html)
+- [AroMIP](AroMIP/index.html)

@@ -42,7 +42,6 @@
       font-family: "Times New Roman", serif;
     }
     th, td {
-	  width: 25%;
       border: 1px solid #999;
       padding: 10px;
       text-align: left;
@@ -75,7 +74,7 @@
 </head>
 <body>
 
-<h2>AroMemIn: A predictor of membrane insertion by aromatic-centered motifs of intrinsically disordered proteins</h2>
+<h2>AroMIP: A predictor of membrane insertion by aromatic-centered motifs of intrinsically disordered proteins</h2>
 
 <div id="figure-container">
   <figure>
@@ -86,7 +85,7 @@
 <section style="margin-top: 20px; background: #f9f9f9; padding: 15px;">
   <h3>Method at a Glance</h3>
   <p>
-AroMemIn scans a given protein sequence for 9-residue fragments centered on an aromatic residue (F, W, Y), and predicts whether the
+AroMIP scans a given protein sequence for 9-residue fragments centered on an aromatic residue (F, W, Y), and predicts whether the
 aromatic sidechain in each fragment inserts into the acyl chain region of membranes. The prediction is based on a mathematical model,
 where each flanking residue contributes a multiplicative factor to the membrane insertion score of the central aromatic residue. The model
 was trained on the intrinsically disordered regions of the human proteome.
@@ -236,10 +235,10 @@ function runPrediction() {
     return;
   }
 
-  let html = "<table><tr><th>Motif</th><th>Q score</th><th>Membrane-insertion propensity (P)</th><th>Prediction</th></tr>";
+  let html = "<table><tr><th>Motif</th><th>Membrane-insertion propensity (P)</th><th>Prediction</th></tr>";
   results.forEach(r => {
     const label = r.classification === 1 ? "Inserter" : "Non-inserter";
-    html += `<tr><td>${r.fragment}</td><td>${r.Q}</td><td>${r.score}</td><td>${label}</td></tr>`;
+    html += `<tr><td>${r.fragment}</td><td>${r.score}</td><td>${label}</td></tr>`;
   });
   html += "</table>";
   output.innerHTML = html;

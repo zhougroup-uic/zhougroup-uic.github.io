@@ -14,8 +14,8 @@ fluid are demonstrated in the notebook below.
 
 The notebook is provided in two versions:
 
-- [**fvgemc.ipynb**](Notebook/fvgemc.ipynb) — a clean copy without output, ready to run.
-- [**fvgemc.cached.ipynb**](Notebook/fvgemc.cached.ipynb) — includes precomputed outputs and figures, for quick preview on GitHub.
+- [**fvgemc.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb) — a clean copy without output, ready to run. ([download](Notebook/fvgemc.ipynb))
+- [**fvgemc.cached.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb) — includes precomputed outputs and figures, for quick preview on GitHub. ([download](Notebook/fvgemc.cached.ipynb))
 
 Both require a Julia kernel and are configured to run on [Google Colab](https://colab.research.google.com):
 

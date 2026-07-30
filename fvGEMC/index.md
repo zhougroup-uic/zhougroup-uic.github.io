@@ -14,10 +14,10 @@ fluid are demonstrated in the notebook below.
 
 The notebook is provided in two versions:
 
-- [**fvgemc.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb) — a clean copy without output, ready to run. ([download](Notebook/fvgemc.ipynb))
-- [**fvgemc.cached.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb) — includes precomputed outputs and figures, for quick preview on GitHub. ([download](Notebook/fvgemc.cached.ipynb))
+- [**fvgemc.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb) — a clean copy without output, ready to run. ([download](Notebook/fvgemc.ipynb) — right-click, Save As)
+- [**fvgemc.cached.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb) — includes precomputed outputs and figures, for quick preview on GitHub. ([download](Notebook/fvgemc.cached.ipynb) — right-click, Save As)
 
-Both require a Julia kernel and are configured to run on [Google Colab](https://colab.research.google.com):
+Both require a Julia kernel and are configured to run on [Google Colab](https://colab.research.google.com) (signing in to a Google account is needed to run, not to view):
 
 - [Open fvgemc.ipynb in Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb)
 - [Open fvgemc.cached.ipynb in Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb)

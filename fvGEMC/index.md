@@ -13,27 +13,16 @@ fluid are demonstrated in the notebook below.
 ## Notebook
 
 The notebook is provided in a Julia version and an equivalent Python version, which reproduces
-the same results. Each is provided in two forms:
+the same results. Each version comes as a clean copy (no output, ready to run) and a cached
+copy (precomputed outputs and figures, for quick preview). Colab requires signing in to a
+Google account to run, not to view.
 
-### Julia version
-
-- [**fvgemc.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb) — a clean copy without output, ready to run. ([download](Notebook/fvgemc.ipynb) — right-click, Save As)
-- [**fvgemc.cached.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb) — includes precomputed outputs and figures, for quick preview on GitHub. ([download](Notebook/fvgemc.cached.ipynb) — right-click, Save As)
-
-Requires a Julia kernel and is configured to run on [Google Colab](https://colab.research.google.com) (signing in to a Google account is needed to run, not to view):
-
-- [Open fvgemc.ipynb in Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb)
-- [Open fvgemc.cached.ipynb in Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb)
-
-### Python version
-
-- [**fvgemc.py.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.ipynb) — a clean copy without output, ready to run. ([download](Notebook/fvgemc.py.ipynb) — right-click, Save As)
-- [**fvgemc.py.cached.ipynb**](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.cached.ipynb) — includes precomputed outputs and figures, for quick preview on GitHub. ([download](Notebook/fvgemc.py.cached.ipynb) — right-click, Save As)
-
-Requires a Python kernel and is configured to run on [Google Colab](https://colab.research.google.com) (signing in to a Google account is needed to run, not to view):
-
-- [Open fvgemc.py.ipynb in Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.ipynb)
-- [Open fvgemc.py.cached.ipynb in Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.cached.ipynb)
+| Notebook | Colab | Preview | Download (right-click, Save As) |
+|---|---|---|---|
+| fvgemc.ipynb (Julia, clean) | [Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb) | [Preview](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb) | [Download](Notebook/fvgemc.ipynb) |
+| fvgemc.cached.ipynb (Julia, cached) | [Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb) | [Preview](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb) | [Download](Notebook/fvgemc.cached.ipynb) |
+| fvgemc.py.ipynb (Python, clean) | [Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.ipynb) | [Preview](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.ipynb) | [Download](Notebook/fvgemc.py.ipynb) |
+| fvgemc.py.cached.ipynb (Python, cached) | [Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.cached.ipynb) | [Preview](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.cached.ipynb) | [Download](Notebook/fvgemc.py.cached.ipynb) |
 
 ## Reference
 

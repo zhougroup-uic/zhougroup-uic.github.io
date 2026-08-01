@@ -12,17 +12,29 @@ fluid are demonstrated in the notebook below.
 
 ## Notebook
 
-The notebook is provided in a Julia version and an equivalent Python version, which reproduces
-the same results. Each version comes as a clean copy (no output, ready to run) and a cached
-copy (precomputed outputs and figures, for quick preview). Colab requires signing in to a
-Google account to run, not to view.
+The simulation and analysis are provided as a [Jupyter Notebook](https://jupyter.org/) — a
+document that interleaves code, its output (figures, tables), and explanatory text into cells
+that run in sequence in a web browser. It's provided in a Julia version and an equivalent
+Python version, which reproduces the same results. Each version comes as a clean copy (no
+output, ready to run) and a cached copy (precomputed outputs and figures, for quick preview
+of results and also ready to run).
 
-| Notebook | Colab | Preview | Download (right-click, Save As) |
+[Google Colab](https://colab.research.google.com) is a free, browser-based Jupyter Notebook
+service: it opens and executes the notebook on Google's servers, so no local Python/Julia
+installation is needed. Notebooks are free to open and view; signing in to a Google account
+is only needed to run one.
+
+| Notebook | Google Colab | GitHub Preview | Download (right-click, Save As) |
 |---|---|---|---|
 | fvgemc.ipynb (Julia, clean) | [Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb) | [Preview](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.ipynb) | [Download](Notebook/fvgemc.ipynb) |
 | fvgemc.cached.ipynb (Julia, cached) | [Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb) | [Preview](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.cached.ipynb) | [Download](Notebook/fvgemc.cached.ipynb) |
 | fvgemc.py.ipynb (Python, clean) | [Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.ipynb) | [Preview](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.ipynb) | [Download](Notebook/fvgemc.py.ipynb) |
 | fvgemc.py.cached.ipynb (Python, cached) | [Colab](https://colab.research.google.com/github/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.cached.ipynb) | [Preview](https://github.com/zhougroup-uic/zhougroup-uic.github.io/blob/master/fvGEMC/Notebook/fvgemc.py.cached.ipynb) | [Download](Notebook/fvgemc.py.cached.ipynb) |
+
+Julia can run the fvGEMC simulations in parallel across CPU cores, giving it a speed advantage
+over the single-threaded Python version on a multi-core machine. On Colab's free shared tier,
+though, the two run in similar time, since Colab's allotted "cores" there are hyperthreads
+rather than independent physical cores.
 
 ## Reference
 

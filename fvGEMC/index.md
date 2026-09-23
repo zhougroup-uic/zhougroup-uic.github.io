@@ -36,10 +36,16 @@ over the single-threaded Python version on a multi-core machine. On Colab's free
 though, the two run in similar time, since Colab's allotted "cores" there are hyperthreads
 rather than independent physical cores.
 
+## Source code
+
+Standalone Julia source code of the GEMC engine is also available for several model systems
+(Lennard-Jones, square-well, patchy particles, and patchy particle mixtures). See
+[`Src/README.md`](Src/README.md) for the source files, input format, and how to run them.
+
 ## Reference
 
 Sanbo Qin and Huan-Xiang Zhou, "A Fixed-Volume Variant of Gibbs-Ensemble Monte Carlo Yields
-Significant Speedup in Binodal Calculation," [arXiv:2512.18899](https://arxiv.org/abs/2512.18899) (2025).
+Significant Speedup in Binodal Calculations," [arXiv:2512.18899](https://arxiv.org/abs/2512.18899) (2025).
 
 ## Data
 

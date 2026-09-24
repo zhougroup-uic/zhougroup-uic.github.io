@@ -38,8 +38,8 @@ rather than independent physical cores.
 
 ## Source codes
 
-Standalone Julia source code of the fvGEMC engine is also available for several model systems
-(Lennard-Jones, square-well, patchy particles, and patchy particle mixtures). See
+Standalone Julia source codes of the fvGEMC engine are also available for several model systems
+(Lennard-Jones, square-well, and patchy particles, and patchy particle mixtures). See
 [`Src/README.md`](Src/README.md) for the source files, input format, and how to run them.
 
 ## Reference

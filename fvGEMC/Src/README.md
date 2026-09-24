@@ -1,6 +1,6 @@
 # fvGEMC source code
 
-Standalone Julia source code of the GEMC engine for several model systems. Each folder holds
+Standalone Julia source code of the GEMC/fvGEMC engine for several model systems. Each folder holds
 the script and an example `read.in` input file. Run a script from its folder with
 `julia gemc.<system>.jl`. The Lennard-Jones script is the same engine used in the Julia
 notebook in [`../Notebook`](../Notebook).

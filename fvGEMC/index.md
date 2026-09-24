@@ -8,7 +8,7 @@ title: fvGEMC
 densities using a set of short, fixed-volume GEMC runs. The direct simulation results are fit to recover
 the coexistence densities — reproducing the results of regular (volume-exchange) GEMC at
 a fraction of the cost. The method and its validation on the truncated Lennard-Jones
-fluid are demonstrated in the notebook below. Standalone GEMC codes for LJ and other fluids and data for figures are also provided.
+fluid are demonstrated in the notebook below. Standalone GEMC/fvGEMC codes for LJ and other fluids and data for figures are also provided.
 
 ## Notebook
 
@@ -38,7 +38,7 @@ rather than independent physical cores.
 
 ## Source codes
 
-Standalone Julia source codes of the fvGEMC engine are also available for several model systems
+Standalone Julia source codes of the GEMC/fvGEMC engine are also available for several model systems
 (Lennard-Jones, square-well, and patchy particles, and patchy particle mixtures). See
 [`Src/README.md`](Src/README.md) for the source files, input format, and how to run them.
 
